@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="3dp" >
+
+
+        <TextView
+            android:id="@+id/chat_send_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="8sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chat_send_time"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/chat_send_avatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                 />
+
+            <TextView
+                android:id="@+id/chat_send_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/chat_send_avatar"
+                android:layout_centerVertical="true"
+                android:background="@drawable/chatto_bg"
+                android:layout_alignWithParentIfMissing="true"
+                android:gravity="center|left"
+                android:lineSpacingMultiplier="1.3"
+                android:maxWidth="200dp"
+                android:text="11111233333333333333333333333333333333333333333333333333333333333333333333333333"
+                android:textColor="@color/first_text_color" />
+
+            <com.example.ishow.UIView.MaterialProgressBar
+                android:id="@+id/chat_send_pb"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/chat_send_msg"
+                android:layout_centerVertical="true"
+                xmlns:myapp="http://schemas.android.com/apk/res/com.example.ishow"
+                myapp:barcolor="@color/colorAccent"
+                />
+
+            <ImageView
+                android:id="@+id/chat_send_fail"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_toLeftOf="@+id/chat_send_msg"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:background="@drawable/msg_state_fail_resend_pressed" />
+        </RelativeLayout>
+</RelativeLayout>

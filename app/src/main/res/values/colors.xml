@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2db5e6</color>
+    <color name="colorPrimaryDark">#2db5e6</color>
+    <color name="colorAccent">#FF4081</color>
+<!-- <color name="colorAccent">#FF4081</color>-->
+    <color name="blue">#0000FF</color>
+    <color name="list_selector_color">#f5fcfe</color>
+    <color name="split_line_color">#e6e6e6</color>
+    <color name="first_text_color">#333333</color>
+    <color name="white">#ffffffff</color>
+    <color name="green">#4dc160</color>
+    <color name="secondary_text_color">#9a9a9a</color>
+    <!--轮播图指示器-->
+    <color name="banner_point_color">#ffff6000</color>
+    <color name="banner_point_color2">#ff89552d</color>
+
+    <color name="material_seekbar_textcolor">#eaa24c</color>
+
+    <!--排行榜-->
+    <color name="rank_header_content_color">#d13c4a</color>
+
+    <!--视频录制界面顶部颜色-->
+    <color name="media_fragment_top_titlebar">#2b2d32</color>
+
+    <!--justalk-->
+    <color name="call_name">@android:color/white</color>
+    <color name="call_state">@android:color/white</color>
+    <color name="call_poor_network_bg">#fff7931e</color>
+    <color name="call_video_paused_txt">@android:color/white</color>
+    <color name="call_end_txt_normal">@android:color/white</color>
+    <color name="call_end_txt_disable">#33ffffff</color>
+    <color name="call_menu_txt_normal">#ff5d5d5d</color>
+    <color name="call_menu_txt_disable">#335d5d5d</color>
+    <color name="call_menu_txt_selected">#cc0189ef</color>
+
+    <color name="call_menu_default_bg_normal_color">#00000000</color>
+    <color name="call_menu_default_bg_pressed_color">#80ffffff</color>
+    <color name="call_menu_default_bg_selected_color">#ffffffff</color>
+    <color name="call_menu_default_bg_disabled_color">#00000000</color>
+    <color name="call_menu_default_stroke_color">#ffffffff</color>
+    <color name="call_menu_default_disabled_stroke_color">#4dffffff</color>
+    <color name="call_menu_end_bg_normal_color">#fffc3c40</color>
+    <color name="call_menu_end_bg_pressed_color">#80fc3c40</color>
+    <color name="call_menu_end_bg_disabled_color">#4d000000</color>
+    <color name="call_menu_redial_bg_normal_color">#ff26D650</color>
+    <color name="call_menu_redial_bg_pressed_color">#8026D650</color>
+    <color name="call_menu_redial_bg_disabled_color">#4d000000</color>
+
+    <color name="call_video_background_color">#33000000</color>
+
+    <color name="call_incoming_bg_anim_color">#4d26d650</color>
+    <color name="call_incoming_bg_slide_color">#66ffffff</color>
+    <color name="call_incoming_decline_bg_normal_color">#fc3c40</color>
+    <color name="call_incoming_decline_bg_pressed_color">#ccfc3c40</color>
+    <color name="call_incoming_answer_bg_normal_color">#26d650</color>
+    <color name="call_incoming_answer_bg_pressed_color">#cc26d650</color>
+    <color name="call_incoming_answer_bg_selected_color">#00000000</color>
+
+   <color name="call_error_bg_color">#ff00bcd4</color>
+
+    <color name="call_btn_text_color">#ffffff</color>
+    <color name="call_btn_text_disabled_color">#4dffffff</color>
+
+    <color name="call_float_text_color">@android:color/white</color>
+    <color name="call_float_bg_color">#80000000</color>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    tools:context=".UIActivity.CourseActivity">
+
+    <include layout="@layout/activity_appbar"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical">
+
+        <com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/chat_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbarStyle="insideOverlay"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrDrawable="@drawable/default_ptr_flip"></com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:background="#ebedf0"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/chat_editext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:maxLines="3"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/caht_send"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/im_send_rectangle"
+                android:gravity="center"
+                android:text="发送"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

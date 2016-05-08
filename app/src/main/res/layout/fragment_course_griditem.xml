@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:baselineAligned="false"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="@dimen/fragment_course_ceil_height">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/fragment_course_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/course_high3"/>
+
+            <TextView
+                android:id="@+id/fragment_course_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/first_text_color"
+               />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/fragment_course_split_line_h"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/split_line_color"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/fragment_course_split_line_v"
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:background="@color/split_line_color"/>
+</LinearLayout>

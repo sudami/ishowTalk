@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/framlayout_container"></include>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tv_about_ishowcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/first_text_color"
+                    android:background="@color/white"
+                    android:padding="@dimen/self_left_margin"
+                    />
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/self_left_margin"
+                    android:layout_marginBottom="20dp"
+                    android:src="@mipmap/ewm"/>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>

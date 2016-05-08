@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/music_play_background"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@mipmap/bg_2"
+           />
+
+       <include layout="@layout/activity_titlebar"></include>
+
+       <com.example.ishow.UIView.CircleImageView
+           android:id="@+id/music_play_avart"
+           android:layout_width="180dp"
+           android:layout_height="180dp"
+           android:layout_above="@+id/music_play_contronller"
+           android:layout_centerHorizontal="true"
+           android:src="@mipmap/bg"
+           android:layout_marginBottom="112dp" />
+
+       <LinearLayout
+           android:id="@+id/music_play_contronller"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/design_bottom_sheet"
+           android:layout_marginBottom="10dp"
+           android:gravity="center"
+           android:orientation="horizontal">
+
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true"
+                   android:src="@mipmap/sudubg" />
+
+               <com.example.ishow.spinnerwheel.WheelVerticalView
+                   android:id="@+id/speed_number"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerInParent="true" />
+           </RelativeLayout>
+
+
+           <ImageView
+               android:id="@+id/music_play_single_random"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="30dp"
+               android:src="@mipmap/iconfont_danquxunhuan" />
+
+           <ImageButton
+               android:id="@+id/music_play_recoder"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="30dp"
+               android:background="@android:color/transparent"
+               android:src="@mipmap/icon_luyin" />
+
+           <ImageView
+               android:id="@+id/music_play_AB"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="30dp"
+               android:src="@mipmap/ab"
+               />
+
+           <ImageButton
+               android:id="@+id/music_play_menu"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="30dp"
+               android:background="@drawable/music_play_menu" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/design_bottom_sheet"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:alpha="0.8"
+           android:gravity="bottom"
+           android:orientation="vertical">
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="14dp"
+               android:gravity="center"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:id="@+id/music_play_curTime"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:text="00:04"
+                   android:textColor="@android:color/white"
+                   android:textSize="12sp" />
+
+               <com.example.ishow.UIView.MaterialSeekBar
+                   android:id="@+id/MaterialSeekBar"
+                   android:layout_width="0dp"
+                   android:minHeight="45dp"
+                   android:maxHeight="45dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1" />
+
+
+               <TextView
+                   android:id="@+id/music_play_totalTime"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="10dp"
+                   android:text="00:04"
+                   android:textColor="@android:color/white"
+                   android:textSize="12sp" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="30dp"
+               android:layout_marginBottom="40dp"
+               android:layout_marginTop="10dp"
+               android:gravity="center"
+               android:orientation="horizontal">
+
+               <ImageView
+                   android:id="@+id/music_play_play_pre"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="45dp"
+                   android:src="@mipmap/icon_houtui" />
+
+               <ImageView
+                   android:id="@+id/music_play_play_btn"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/icon_bofang" />
+
+               <ImageView
+                   android:id="@+id/music_play_play_next"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="45dp"
+                   android:src="@mipmap/icon_kuaijin" />
+           </LinearLayout>
+       </LinearLayout>
+   </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

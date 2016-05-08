@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/call_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/call_bg"
+    android:soundEffectsEnabled="false" >
+
+    <ImageView
+        android:id="@+id/call_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+
+        android:soundEffectsEnabled="false" />
+
+
+    <RelativeLayout
+        android:id="@+id/call_operation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/call_video_background_color"
+        android:soundEffectsEnabled="false" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/call_sub_operation"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <RelativeLayout
+                    android:id="@+id/call_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="42dp"
+                    android:soundEffectsEnabled="false" >
+
+                    <com.example.ishow.justalk.cloud.juscall.FontFitTextView
+                        android:id="@+id/call_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:singleLine="true"
+                        android:textColor="@color/call_name"
+                        android:text="111111"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <RelativeLayout
+                        android:id="@+id/call_state_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/call_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp" >
+
+                        <Chronometer
+                            android:id="@+id/call_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/call_state"
+
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/call_signal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_toRightOf="@+id/call_state"
+                            android:src="@drawable/call_signal_4"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/call_avatar"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_below="@+id/call_state_layout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/call_camera_margin_bottom"
+                    android:soundEffectsEnabled="false" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/call_sub_operation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/call_sub_operation_height"
+            android:layout_alignParentBottom="true"
+            android:soundEffectsEnabled="false" >
+
+            <com.example.ishow.justalk.cloud.juscall.CircleButton
+                android:id="@+id/call_menu_end"
+                android:layout_width="@dimen/call_large_circle_button_size"
+                android:layout_height="@dimen/call_large_circle_button_size"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="onEnd"
+                android:soundEffectsEnabled="false" />
+
+            <LinearLayout
+                android:id="@+id/call_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/call_large_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <com.example.ishow.justalk.cloud.juscall.CircleButton
+                    android:id="@+id/call_menu_cancel"
+                    android:layout_width="@dimen/call_large_circle_button_size"
+                    android:layout_height="@dimen/call_large_circle_button_size"
+                    android:onClick="onEnd"
+                    android:soundEffectsEnabled="false" />
+
+                <TextView
+                    android:id="@+id/call_end_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/call_text_margin_top"
+                    android:text="@string/Cancel"
+                    android:textColor="@color/call_button_text"
+                    android:textSize="@dimen/call_large_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/call_redial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/call_large_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <com.example.ishow.justalk.cloud.juscall.CircleButton
+                    android:id="@+id/call_end_redial"
+                    android:layout_width="@dimen/call_large_circle_button_size"
+                    android:layout_height="@dimen/call_large_circle_button_size"
+                    android:onClick="onRedial"
+                    android:soundEffectsEnabled="false" />
+
+                <TextView
+                    android:id="@+id/call_redial_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/call_text_margin_top"
+                    android:text="@string/Redial"
+                    android:textColor="@color/call_button_text"
+                    android:textSize="@dimen/call_large_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/call_mute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/call_menu_end"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <com.example.ishow.justalk.cloud.juscall.CircleButton
+                        android:id="@+id/call_menu_mute"
+                        android:layout_width="@dimen/call_large_circle_button_size"
+                        android:layout_height="@dimen/call_large_circle_button_size"
+                        android:onClick="onMute"
+                        android:layout_centerHorizontal="true"
+                        android:soundEffectsEnabled="false" />
+
+                    <TextView
+                        android:id="@+id/call_unreadCount"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginRight="11dp"
+                        android:layout_toRightOf="@+id/call_menu_mute"
+                        android:background="@drawable/msg_unread_round"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:textColor="@color/white"
+
+
+                        />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/call_statistic"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/statistics"
+                    android:onClick="onStatistic"
+                    android:padding="14dp"
+                    android:scaleType="centerInside"
+                    android:soundEffectsEnabled="false"
+                    android:src="@drawable/call_statistic_bg" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/call_audio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/call_menu_end"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <com.example.ishow.justalk.cloud.juscall.CircleButton
+                    android:id="@+id/call_menu_audio"
+                    android:layout_width="@dimen/call_large_circle_button_size"
+                    android:layout_height="@dimen/call_large_circle_button_size"
+                    android:onClick="onAudio"
+                    android:soundEffectsEnabled="false" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ViewStub
+            android:id="@+id/call_incoming_import"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/call_incoming_height"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/call_incoming_margin_bottom"
+            android:layout_marginLeft="@dimen/call_incoming_margin_left"
+            android:layout_marginRight="@dimen/call_incoming_margin_right"
+            android:inflatedId="@+id/call_incoming"
+            android:layout="@layout/call_incoming"
+            android:soundEffectsEnabled="false" />
+
+        <Button
+            android:id="@+id/call_shrink"
+            android:layout_width="35dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:onClick="onShrink"
+            android:visibility="gone" />
+
+
+
+    </RelativeLayout>
+
+    <com.example.ishow.justalk.cloud.juscall.RotateLayout
+        android:id="@+id/call_error_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" >
+
+        <com.example.ishow.justalk.cloud.juscall.CancelableTextView
+            android:id="@+id/call_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/call_error_bg_color"
+            android:clickable="true"
+            android:drawableRight="@drawable/call_error_cancel"
+            android:gravity="center"
+            android:padding="8dp"
+            android:soundEffectsEnabled="false"
+            android:textColor="@color/call_video_paused_txt"
+            android:textSize="13sp" />
+    </com.example.ishow.justalk.cloud.juscall.RotateLayout>
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp" android:layout_height="40dp"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/icon_long_press_delete"/>
+</RelativeLayout>

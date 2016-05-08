@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/course_activity_cardView_height"
+    android:layout_marginLeft="@dimen/course_activity_cardView_margin"
+    android:layout_marginRight="@dimen/course_activity_cardView_margin"
+    android:gravity="center"
+    app:contentPaddingLeft="8dp"
+    app:contentPaddingRight="8dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/course_local_item_name"
+            style="@style/text_content_style_1"
+            android:layout_marginLeft="@dimen/course_activity_item_padding"
+            android:gravity="left|center"
+            android:layout_gravity="center|left"
+            android:text="Unit1" />
+
+
+        <LinearLayout
+            android:id="@+id/course_local_item_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/course_local_item_title"
+                style="@style/text_content_style_2"
+                android:layout_marginLeft="@dimen/course_activity_item_padding"
+                android:maxEms="20"
+                android:gravity="center|left"
+                android:text="#D1D1D1" />
+
+            <ImageView
+                android:id="@+id/course_local_item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:gravity="center|left"
+                android:src="@drawable/iconfont_music"/>
+
+            <TextView
+                android:id="@+id/course_local_item_musicSize"
+                style="@style/text_content_style_2"
+                android:layout_marginLeft="3dp"
+                android:text="23" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

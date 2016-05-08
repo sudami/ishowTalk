@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/ran_avart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14dp"
+        />
+
+    <TextView
+        android:id="@+id/ran_name"
+        android:layout_toRightOf="@+id/ran_avart"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="7dp"
+        android:text="songyubao"
+        android:textSize="14sp"
+        android:textColor="@color/first_text_color"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/ran_from"
+        android:layout_toRightOf="@+id/ran_avart"
+        android:layout_below="@+id/ran_name"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="7dp"
+        android:text="songyubao"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="12sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/ran_time"
+        android:layout_width="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginRight="@dimen/self_left_margin"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

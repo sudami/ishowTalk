@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <android.support.design.widget.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:theme="@style/AppTheme.AppBarOverlay"
+      >
+    <include layout="@layout/activity_titlebar">
+    </include>
+  </android.support.design.widget.AppBarLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="76dp"
+    android:orientation="vertical">
+
+
+
+  <include layout="@layout/login_register_nickname"></include>
+  <include layout="@layout/login_register_phone2"></include>
+  <include layout="@layout/login_register_getmsgcode"></include>
+  <include layout="@layout/login_register_password"></include>
+
+  <Button
+      android:id="@+id/register"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/editext_height"
+      android:background="@drawable/button_login_background"
+      style="@style/text_title_style"
+      android:gravity="center"
+      android:text="注册"
+      android:layout_marginTop="@dimen/editext_login_topmagin"
+      android:layout_marginRight="@dimen/editext_find_password_rightmargin"
+      android:layout_marginLeft="@dimen/editext_find_password_rightmargin"/>
+</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

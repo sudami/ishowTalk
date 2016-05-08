@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/fragment_course_music_controller"
+            android:layout_width="match_parent"
+            android:background="#caecf9"
+            android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/shoye_playing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:src="@mipmap/shoye_playing"/>
+            <TextView
+                android:id="@+id/shoye_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="14sp"
+                android:gravity="left|center"
+                android:layout_marginLeft="8dp"
+                android:maxLength="30"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:layout_toRightOf="@+id/shoye_playing"
+                android:textColor="@color/colorPrimary"/>
+
+            <ImageView
+                android:id="@+id/shouye_bofang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="22dp"
+                android:minWidth="22dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/shouye_next"
+                android:layout_marginRight="8dp"
+                android:src="@mipmap/shouye_play"/>
+
+            <ImageView
+                android:id="@+id/shouye_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="14dp"
+                android:minHeight="20dp"
+                android:minWidth="20dp"
+                android:layout_toLeftOf="@+id/shoye_enter"
+                android:src="@mipmap/shouye_next"/>
+            <ImageView
+                android:id="@+id/shoye_enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="14dp"
+                android:src="@mipmap/shoye_enter"/>
+        </RelativeLayout>
+        <!--课程体系的轮播图-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:splitMotionEvents="false" >
+
+            <com.example.ishow.ViewFlow.ExtendViewFlow
+                android:id="@+id/viewflow_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:splitMotionEvents="false" />
+
+
+            <com.example.ishow.ViewFlow.CircleFlowIndicator
+                android:id="@+id/viewflowindic_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fragment_course_indicator_BottomMargin"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:padding="2dip"
+                android:splitMotionEvents="false"
+                app:activeColor="@color/banner_point_color"
+                app:activeType="fill"
+                app:circleSeparation="20dip"
+                app:inactiveColor="@color/white"
+                app:inactiveType="fill"
+                app:radius="4dip" />
+
+        </RelativeLayout>
+
+        <com.example.ishow.UIView.NoScrollGridView
+            android:id="@+id/fragment_course_NoScrollGridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:scrollbars="none"
+            android:fadingEdgeLength="@null"
+            android:cacheColorHint="@android:color/transparent"
+            >
+
+        </com.example.ishow.UIView.NoScrollGridView>
+    </LinearLayout>
+</ScrollView>

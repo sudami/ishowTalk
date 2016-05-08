@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/media_fragment_top_titlebar"
+    android:layout_height="0dp"
+    android:layout_weight="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/media_fragment_top_titlebar"
+        android:layout_height="45dp">
+        <ImageView
+            android:id="@+id/fragment_media_top_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_guanbi"/>
+
+        <TextView
+            android:id="@+id/fragment_media_top_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/luzhi"
+            android:text="00:00"
+            android:drawablePadding="5dp"
+            />
+    </RelativeLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:layout_marginLeft="3dp"
+       android:layout_marginRight="3dp">
+       <SurfaceView
+           android:id="@+id/fragment_media_SurfaceView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="1"/>
+       <ProgressBar
+           android:layout_width="match_parent"
+           android:layout_height="3dp"
+           android:max="100"
+           android:progress="1"
+           android:layout_alignParentBottom="true"
+           style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+   </RelativeLayout>
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="27.5dp"
+          android:layout_marginBottom="27.5dp"
+          android:layout_gravity="center"
+          android:orientation="horizontal">
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="40dp"
+              android:src="@drawable/icon_shanchushipin"/>
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="40dp"
+              android:layout_centerInParent="true"
+              android:src="@drawable/icon_kaishiluzhi"/>
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="40dp"
+              android:layout_alignParentRight="true"
+              android:layout_marginRight="40dp"
+              android:src="@drawable/icon_baocunshipin"/>
+      </RelativeLayout>
+</LinearLayout>

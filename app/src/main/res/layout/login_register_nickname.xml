@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/phoneInput"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <com.example.ishow.UIView.PasswordEditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editext_height"
+            android:inputType="text"
+            android:hint="昵称"
+            android:textSize="16sp"
+            android:textColorHint="#9a9a9a"
+            android:drawablePadding="14dp"
+            android:paddingLeft="@dimen/editext_drawable_padding"
+            myapp:hide_drawable="@drawable/icon_shanchu"
+            myapp:password_visible="true"
+            myapp:clear_text="true"
+            android:focusable="true"
+            myapp:errorEnabled="true"
+            android:paddingRight="@dimen/editext_drawable_padding"
+            myapp:show_drawable="@drawable/icon_shanchu" />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

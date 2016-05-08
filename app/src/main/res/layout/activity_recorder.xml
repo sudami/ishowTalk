@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    tools:context="com.example.ishow.UIActivity.LocalCourseActivity"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/framlayout_container"></include>
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:headerDividersEnabled="true"
+        android:layout_marginTop="?attr/actionBarSize"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent" />
+</FrameLayout>

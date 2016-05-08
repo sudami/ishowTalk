@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="108dp"
+    android:layout_height="45dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/quick_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:background="@drawable/quick_practice_bg"
+        >
+
+        <TextView
+            android:id="@+id/quick_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="第一课"
+            android:textColor="@color/first_text_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/quick_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="good afternoon"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/quick_item_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/button_bg"
+
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tianjia" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="展开更多"
+            android:textColor="#2db6e5"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

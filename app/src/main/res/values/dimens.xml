@@ -1,0 +1,47 @@
+<resources>
+    <dimen name="content_margin_toolbar">48dp</dimen>
+    <!--课程轮播图 下标指示器 距离底部边缘的距离-->
+    <dimen name="fragment_course_indicator_BottomMargin">8dp</dimen>
+    <!-- 课程格子文字与 图片之间 间距 -->
+    <dimen name="fragment_course_text_image_TopMargin">6dp</dimen>
+    <!-- 课程格子高度 -->
+    <dimen name="fragment_course_ceil_height">120dp</dimen>
+
+    <dimen name="course_activity_cardView_height">70dp</dimen>
+    <dimen name="course_activity_cardView_margin">8dp</dimen>
+    <dimen name="course_activity_item_padding">16dp</dimen>
+    <dimen name="course_activity_item_content_topMargin">5dp</dimen>
+
+    <!--登陆界面相关-->
+    <dimen name="editext_height">48dp</dimen>
+    <dimen name="editext_top_margin">14dp</dimen>
+    <dimen name="editext_find_password_topmargin">24dp</dimen>
+    <dimen name="editext_find_password_rightmargin">10dp</dimen>
+    <dimen name="editext_drawable_padding">20dp</dimen>
+    <dimen name="editext_login_topmagin">36dp</dimen>
+
+
+   <!-- //**************************-->
+    <dimen name="material_seekbar_textsize">20sp</dimen>
+
+    <!--更多界面-->
+    <dimen name="self_left_margin">15dp</dimen>
+
+    <!--justalk-->
+    <dimen name="call_float_margin_right">20dp</dimen>
+    <dimen name="call_float_margin_top">48dp</dimen>
+
+    <dimen name="call_incoming_margin_left">42dp</dimen>
+    <dimen name="call_incoming_margin_right">42dp</dimen>
+    <dimen name="call_incoming_gap_size">3dp</dimen>
+    <dimen name="call_incoming_margin_bottom">34dp</dimen>
+    <dimen name="call_incoming_height">76dp</dimen>
+    <dimen name="call_camera_margin_bottom">23dp</dimen>
+    <dimen name="call_large_circle_button_size">70dp</dimen>
+    <dimen name="call_small_circle_button_size">57dp</dimen>
+    <dimen name="call_large_horizontal_margin">45dp</dimen>
+    <dimen name="call_sub_operation_height">107dp</dimen>
+    <dimen name="call_text_size">12sp</dimen>
+    <dimen name="call_large_text_size">13sp</dimen>
+    <dimen name="call_text_margin_top">5dp</dimen>
+</resources>

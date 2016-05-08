@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_appbar"></include>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/practice_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="#f6ee12"
+        app:tabIndicatorHeight="2dp"
+        app:tabPaddingTop="10dp"
+        app:tabSelectedTextColor="#f6ee12"
+        android:background="@color/rank_header_content_color"
+        app:tabTextColor="#f6ee12">
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/practice_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/practice_tablayout"
+        android:layout_marginTop="101dp" />
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,191 @@
+<resources>
+
+    <!--<string name="JusTalkCloud_AppKey">6c06d1b0d9015e47ec144097</string>
+	<string name="MiPush_AppId">2882303761517416129</string>
+    <string name="MiPush_AppKey">5211741695129</string>-->
+
+    <string name="JusTalkCloud_AppKey">bb2910a8a8a4e9b3821e5097</string>
+    <!-- bb2910a8a8a4e9b3821e5097 -->
+    <string name="MiPush_AppId"> 2882303761517391317</string>
+    <string name="MiPush_AppKey">5481739161317</string>
+    <string name="app_name">iShow复读机</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_save_sucess_1">图片已保存在</string>
+    <string name="banner_save_sucess_2">目录下</string>
+    <string name="no_storage_permission">SD卡权限被禁止.请到[设置]中授予ishow复读机访问SD卡的权限!</string>
+    <string name="please_download_first">请先下载该课时!</string>
+    <string name="no_course_to_download">没有可下载的课程,请前往iShow复读机[意见反馈]反馈该错误</string>
+    <string name="class_course_title">-第%1$d课</string>
+    <string name="no_record_permission">麦克风权限被禁止.请到[设置]中授予ishow复读机访问麦克风的权限!</string>
+    <string name="time_left">剩余%1$ds</string>
+    <string name="record_palying">正在播放录音...</string>
+    <string name="first_too_long">请耐心等待...</string>
+
+    <!--主页面九大课程体系的名字-->
+    <string-array name="course_name_array">
+
+        <item>初级班</item>
+        <item>中级班</item>
+        <item>高级2.0</item>
+        <item>高级3.0</item>
+        <item>影视班</item>
+        <item>影视2.0</item>
+        <item>晨读</item>
+        <item>教师</item>
+        <item>其他</item>
+    </string-array>
+
+    <string name="title_denglu">登陆</string>
+    <string name="title_zhuce">注册</string>
+    <string name="title_forget_password">忘记密码 </string>
+    <string name="xiugai_mima">修改密码 </string>
+
+    <string name="nickname">昵称</string>
+    <string name="logining">登陆ing...</string>
+    <string name="registering">注册ing...</string>
+    <string name="request_server">请求服务器ing...</string>
+    <string name="request_server_error">请求服务器错误,请重试</string>
+
+
+    <string name="error_phone">错误的手机号格式!</string>
+    <string name="error_password">错误的密码格式!</string>
+    <string name="error_msgcode">错误的验证码格式!</string>
+    <string name="error_nickname">错误的昵称格式!</string>
+    <string name="error_user_exit">该账号已存在,请登录</string>
+    <string name="seconds_to_retry">%1$d s后重试</string>
+    <string name="getmsgcode">获取验证码</string>
+    <string name="error_twice_pass_notequal">两次密码不相同!</string>
+    <string name="zhen_zhidao">朕知道了!</string>
+    <string name="msg_send_OK">短信验证码下发成功！</string>
+    <string name="mima_reset_ok">密码重置成功！</string>
+    <string name="mima_changed_ok">密码修改成功！</string>
+
+
+    <string name="hide_text">HIDE</string>
+    <string name="show_text">SHOW</string>
+
+    <string name="course_name_primary">初级班</string>
+    <string name="course_name_middle">中级班</string>
+    <string name="course_name_high2">高级2.0</string>
+    <string name="course_name_high3">高级3.0</string>
+    <string name="course_name_video">影视班</string>
+    <string name="course_name_video2">影视2.0</string>
+    <string name="course_name_morning">晨读</string>
+    <string name="course_name_teacher">教师</string>
+    <string name="course_name_other">其他课程</string>
+
+
+    <string name="xiaZaiGuanLi">下载管理</string>
+    <string name="course_paths_isNUll">没有可下载的音频,请重新下载！</string>
+    <string name="course_paths_isNUll_toPlay">音频资源可能不存在或已损坏,请重新下载！</string>
+    <string name="database_open_failed">数据库操作失败,可能是[存储]权限被禁用！</string>
+
+
+    <!--个人资料-->
+    <string name="personal_info">资料编辑</string>
+    <string name="personal_center">个人中心</string>
+    <string name="personal_right">编辑</string>
+    <string name="personal_from">来自:</string>
+    <!--排行榜-->
+    <string name="rank_wenben_rank">文本练习排行榜</string>
+    <string name="rank_wenben_qaunguo">全国</string>
+    <string name="rank_wenben_school">本校</string>
+    <string name="rank_wenben_class">本班</string>
+    <string name="rank_wenben_today">今日</string>
+    <string name="rank_wenben_week">本周</string>
+    <string name="rank_shipin_rank">视频对练排行榜</string>
+    <!--对联记录-->
+    <string name="history_NO_login">请登录后再来重试~</string>
+    <string name="history_title">对练记录</string>
+    <string name="NO_history">你还没有对练过~0.0~</string>
+    <string name="history_NO_login_op">对方不在线,你可以留言通知TA~~</string>
+    <!--设置-->
+    <string name="shezhi_title">帮助与反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="suugesstion">意见反馈</string>
+    <!--检测更新-->
+    <string name="soft_update_later">再说</string>
+    <string name="soft_update_updatebtn">升级</string>
+    <string name="soft_update_title">检测到有更新版本</string>
+    <string name="files_deleting">文件删除ing...</string>
+    <string name="files_delete_yes_no">删除文件,请三思啊...</string>
+    <string name="files_delete_yes">清除</string>
+    <string name="files_delete_no">暂不</string>
+    <!--本地录音-->
+    <string name="luyin_title">课时录音</string>
+    <string name="luyin_no_files">这么好的声音没有录音真是可惜了0.0</string>
+    <!--关注的人-->
+    <string name="fans_title">我的关注</string>
+    <!--人员选择-->
+    <string name="choose_sudent">人员选择</string>
+    <!--lunbotu-->
+    <string name="banner_flow">轮播详情</string>
+    <!--好友搜索-->
+    <!--lunbotu-->
+    <string name="search_freinds">搜索学员</string>
+    <string name="search_no_keyowrods">请输入关键词</string>
+    <!--视频录制-->
+    <string name="shipinluzhi_title">成长记录</string>
+
+
+
+
+
+
+    <!--Justalk-->
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="statistics">statistics</string>
+    <string name="Voice_incoming">Voice incoming</string>
+    <string name="Video_incoming">Video incoming</string>
+    <string name="Incoming">Incoming</string>
+    <string name="Paused">Paused</string>
+    <string name="Answering">Answering</string>
+    <string name="Calling">Calling</string>
+    <string name="Ringing">Ringing</string>
+    <string name="Talking">Talking</string>
+    <string name="Connecting">Connecting</string>
+    <string name="Call_ended">Call ended</string>
+    <string name="Speaker">Speaker</string>
+    <string name="Headset">Headset</string>
+    <string name="Receiver">Receiver</string>
+    <string name="Voice_only">Voice only</string>
+    <string name="Rear_camera">Rear camera</string>
+    <string name="Front_camera">Front camera</string>
+    <string name="Camera_off">Camera off</string>
+    <string name="Voice_call">Voice call</string>
+    <string name="Video_call">Video call</string>
+    <string name="Call_disconnected">Call disconnected</string>
+    <string name="Call_ending">Call ending</string>
+    <string name="Busy">Busy</string>
+    <string name="Offline">Offline</string>
+    <string name="No_answer">No answer</string>
+    <string name="Temporarily_unavailable">Temporarily unavailable</string>
+    <string name="No_internet_connection">No Internet connection</string>
+    <string name="Switched_to_voice_call">Switched to voice call</string>
+    <string name="Switch">Switch</string>
+    <string name="Camera_on">Camera on</string>
+    <string name="Redial">Redial</string>
+    <string name="Camera_device_error">Camera device error</string>
+    <string name="Open_Camera">Open Camera</string>
+    <string name="Open_Camera_app_to_fix_device_error">Open Camera app to fix device error</string>
+    <string name="Not_running">Not running</string>
+    <string name="ringtone_spring_ding_dong">spring_ding_dong.mp3</string>
+    <string name="Reconnecting">Reconnecting</string>
+    <string name="Call_paused">Call paused</string>
+    <string name="Interrupted_by_regular_call_description">Interrupted by regular call, please hold on</string>
+    <string name="Video_paused">Video paused</string>
+    <string name="Poor_connection">Poor connection</string>
+    <string name="Poor_connection_description">The connection is poor. The video will resume automatically when the connection improves.</string>
+    <string name="Other_side_camera_off">Camera off</string>
+    <string name="Please_hang_up_the_regular_call_before_you_answer">Please hang up the regular call before you answer %1$s</string>
+    <string name="Please_check_the_network_connection">Please check the network connection</string>
+    <string name="app_label_hasnot_been_installed">%1$s hasn\'t been installed</string>
+    <string name="Audio_device_error">Audio device error</string>
+    <string name="Enable_display_pop_up_window">Enable \"Display pop-up window\"</string>
+    <string name="Enable_display_pop_up_window_description_format">To use minimized calling feature, enable \"Display pop-up window\" for %1$s in \"Security > Permissions > Permissions\"</string>
+    <string name="Security">Security</string>
+
+
+
+</resources>

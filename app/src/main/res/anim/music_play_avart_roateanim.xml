@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <rotate
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:interpolator="@android:anim/anticipate_interpolator"
+        android:toDegrees="+360" />
+</set>
+
+<!--音频播放界面 的 学员头像旋转动画-->

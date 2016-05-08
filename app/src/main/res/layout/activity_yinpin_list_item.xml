@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    >
+    <ImageView
+        android:id="@+id/course_yinpin_item_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="14dp"
+        android:src="@mipmap/iconfont_yinpin"/>
+    <TextView
+        android:id="@+id/course_yinpin_item_name"
+        android:textSize="16sp"
+        android:textColor="@color/first_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="14dp"
+        android:minHeight="70dp"
+        android:gravity="center|left"
+        android:text="Unit1" />
+
+</LinearLayout>

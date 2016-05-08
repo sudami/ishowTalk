@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- common -->
+    <string name="OK">确定</string>
+    <string name="Cancel">取消</string>  
+    <string name="app_label_hasnot_been_installed">未安装 %1$s</string>
+
+    <!-- call -->
+    <string name="Voice_call">语音通话</string>
+    <string name="Video_call">视频通话</string>
+    <string name="Answering">正在接听</string>
+    <string name="Calling">正在呼叫</string>
+    <string name="Ringing">正在振铃</string>
+    <string name="Talking">正在通话</string>
+    <string name="Connecting">正在连接</string>
+    <string name="Call_ending">通话即将结束</string>
+    <string name="Call_ended">通话结束</string>
+    <string name="No_answer">无人接听</string>
+    <string name="Busy">对方正忙</string>
+    <string name="Offline">对方不在线</string>
+    <string name="Temporarily_unavailable">暂时无法接通</string>
+    <string name="No_internet_connection">无互联网连接</string>
+    <string name="Please_check_the_network_connection">请确认网络已经连接</string>
+    <string name="Reconnecting">正在重新连接</string>
+    <string name="Call_disconnected">通话已中断</string>
+    <string name="Call_paused">对方暂停了通话</string>
+    <string name="Interrupted_by_regular_call_description">对方正在进行常规通话, 请稍候。</string>
+    <string name="Video_paused">对方暂停了视频</string>
+    <string name="Poor_connection">当前网络不稳定</string>
+    <string name="Poor_connection_description">当前网络不稳定。网络稳定后视频会自动继续。</string>
+    <string name="Other_side_camera_off">对方关闭了摄像头</string>
+    <string name="Please_hang_up_the_regular_call_before_you_answer">接听 %1$s 前请您先挂断常规通话。</string>
+
+    <!-- call.button -->
+    <string name="Camera_on">开启摄像头</string>
+    <string name="Camera_off">关闭摄像头</string>
+    <string name="Switch">切换摄像头</string>
+    <string name="Redial">重拨</string>
+
+    <!-- call.device -->
+    <string name="Speaker">扬声器</string>
+    <string name="Headset">耳麦</string>
+    <string name="Receiver">听筒</string>
+    <string name="Voice_only">仅语音</string>
+    <string name="Rear_camera">后置摄像头</string>
+    <string name="Front_camera">前置摄像头</string>
+    <string name="Accept">接受</string>
+    <string name="Decline">拒绝</string>
+    <string name="Switched_to_voice_call">已切换为语音通话</string>
+    <string name="Camera_device_error">相机设备异常</string>
+    <string name="Open_Camera">打开相机</string>
+    <string name="Open_Camera_app_to_fix_device_error">打开系统相机以恢复设备</string>
+
+    <string name="Voice_incoming">语音来电</string>
+    <string name="Video_incoming">视频来电</string>
+    <string name="Incoming">来电</string>
+    <string name="Paused">暂停</string>
+
+    <string name="Not_running">未运行</string>
+ 	<string name="Audio_device_error">音频设备异常</string>
+ 	<string name="Enable_display_pop_up_window">设置悬浮窗权限</string>
+    <string name="Enable_display_pop_up_window_description_format">为了正常使用通话最小化功能，请在“安全中心 > 授权管理 > 应用权限管理”允许 %1$s 打开悬浮窗</string>
+    <string name="Security">安全中心</string>
+</resources>
