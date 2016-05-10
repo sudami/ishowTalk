@@ -23,6 +23,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -254,14 +257,21 @@ public class StorageUtils {
      * @return
      */
     public  String getSdVideoSize(long size){
-        int kb = (int) ((float)size/1000);
+        double kb = (double) ((float)size/1000);
+        DecimalFormat df2  = new DecimalFormat("#");
+
         if (kb<1024)
-            return kb+"KB";
+        {
+            return  df2.format(kb)+"KB";
+        }
+
         else
         {
-            int mb = kb / 1024;
-            kb  =kb%1024;
-            return mb+"."+kb+"M";
+            int mb = (int) (kb / 1024);
+            kb  =kb%1024/100;
+            if (kb>1)
+            return mb+"."+ df2.format((int)kb)+"M";
+            else return mb+"M";
         }
     }
 }

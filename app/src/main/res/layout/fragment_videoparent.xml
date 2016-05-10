@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <RelativeLayout
+
+       android:layout_width="match_parent"
+       android:background="@color/media_fragment_top_titlebar"
+       android:layout_height="45dp">
+      <ImageView
+          android:id="@+id/fragment_gallery_top_close"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="15dp"
+
+          android:layout_centerVertical="true"
+          android:src="@drawable/icon_guanbi"/>
+
+      <RelativeLayout
+          android:id="@+id/fragment_gallery_top_layout"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:layout_centerInParent="true">
+         <TextView
+             android:id="@+id/fragment_gallery_top_dir"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textColor="@android:color/white"
+             android:textSize="16sp"
+             android:layout_centerVertical="true"
+             android:drawableLeft="@drawable/luzhi"
+             android:layout_marginRight="5dp"
+             android:text="所有视频"
+             android:drawablePadding="5dp"
+             />
+
+         <ImageView
+             android:id="@+id/fragment_gallery_top_jiantou"
+             android:layout_width="14dp"
+             android:layout_height="18dp"
+             android:layout_toRightOf="@+id/fragment_gallery_top_dir"
+             android:layout_marginRight="5dp"
+             android:layout_centerVertical="true"
+             android:src="@drawable/icon_jiantou"/>
+      </RelativeLayout>
+
+
+      <TextView
+          android:id="@+id/fragment_gallery_top_upload"
+          android:layout_width="55dp"
+          android:layout_height="30dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="10dp"
+          android:layout_centerVertical="true"
+          android:textColor="@android:color/white"
+          android:gravity="center"
+          android:text="上传"
+          android:enabled="false"
+          android:textSize="14sp"
+          android:alpha="0.5"
+          android:background="@drawable/im_send_rectangle"></TextView>
+   </RelativeLayout>
+   <com.handmark.pulltorefresh.library.PullToRefreshGridView
+       android:id="@+id/PullToRefreshRecyclerView"
+       android:layout_width="match_parent"
+       android:layout_marginTop="5dp"
+       android:numColumns="3"
+       android:layout_marginLeft="5dp"
+       android:layout_marginRight="5dp"
+       android:verticalSpacing="5dp"
+       android:horizontalSpacing="5dp"
+       android:layout_height="match_parent">
+
+   </com.handmark.pulltorefresh.library.PullToRefreshGridView>
+
+</LinearLayout>
