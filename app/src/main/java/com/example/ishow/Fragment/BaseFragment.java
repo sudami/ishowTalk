@@ -1,5 +1,6 @@
 package com.example.ishow.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,10 +20,12 @@ public abstract class BaseFragment extends Fragment {
 
     public LayoutInflater inflater;
     public View rootView =null;
+    public Context context;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        context = getActivity();
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -34,7 +37,7 @@ public abstract class BaseFragment extends Fragment {
      */
     public View getView(int layoutId){
         this.inflater = LayoutInflater.from(getActivity());
-        View rootView = inflater.inflate(layoutId,null);
+        rootView = inflater.inflate(layoutId,null);
 //        ButterKnife.bind(this, rootView);
         return rootView;
     }

@@ -3,17 +3,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <!-- <FrameLayout
+   <FrameLayout
        android:id="@+id/media_recorder_container"
        android:layout_width="match_parent"
        android:layout_height="0dp"
        android:layout_weight="1">
 
-   </FrameLayout>-->
-    <include layout="@layout/fragment_mediarecorder"></include>
-    <!--<LinearLayout
+   </FrameLayout>
+   <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:background="@color/media_fragment_top_titlebar"
         android:orientation="horizontal">
        <com.example.ishow.UIView.MediaRecorderBottomTextView
@@ -37,5 +36,5 @@
             android:textStyle="bold"
             android:textColor="#ff3a2f"
             android:layout_weight="1"/>
-    </LinearLayout>-->
+    </LinearLayout>
 </LinearLayout>

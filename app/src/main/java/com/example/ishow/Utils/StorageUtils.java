@@ -246,4 +246,22 @@ public class StorageUtils {
             return courseEntry;
         }
     }
+
+
+    /**
+     * 获取sd卡中 音视频 大小的方法
+     * @param size
+     * @return
+     */
+    public  String getSdVideoSize(long size){
+        int kb = (int) ((float)size/1000);
+        if (kb<1024)
+            return kb+"KB";
+        else
+        {
+            int mb = kb / 1024;
+            kb  =kb%1024;
+            return mb+"."+kb+"M";
+        }
+    }
 }

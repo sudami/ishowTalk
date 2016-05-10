@@ -496,7 +496,7 @@ public class MusicPlayActivity extends AppBaseCompatActivity implements SeekBar.
                            boolean start = soundMeter.start(courseTitleName.getText().toString()+".amr");
                            if (!start) {
                                dialog.cancelDialog();
-                               ToastUtil.makeSnack(v, getString(R.string.no_storage_permission), MusicPlayActivity.this);
+                               ToastUtil.makeSnack(fragment_videoparent, getString(R.string.no_storage_permission), MusicPlayActivity.this);
                            } else {
                                //soundMeter.start();
                                startRecordeTime = System.currentTimeMillis();

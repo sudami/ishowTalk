@@ -10,13 +10,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.ishow.Application.iShowTalkApplication;
@@ -24,9 +22,9 @@ import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.Bean.MsgEntry;
 import com.example.ishow.Bean.UserEntry;
 import com.example.ishow.Fragment.FragmentCourse;
-import com.example.ishow.Fragment.FragmentMe;
 import com.example.ishow.Fragment.FragmentMsgList;
 import com.example.ishow.Fragment.FragmentPractice;
+import com.example.ishow.Fragment.GalleryFragment;
 import com.example.ishow.Service.JustalkStateCheckReciver;
 import com.example.ishow.UIActivity.SearchActivity;
 import com.example.ishow.Utils.ChatManager;
@@ -55,7 +53,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
     FragmentCourse fragmentCourse;
     FragmentPractice fragmentPractice;
     FragmentMsgList fragmentMsgList;
-    FragmentMe fragmentMe;
+    GalleryFragment fragmentMe;
     //  @Bind(R.id.main_radiobutton_course)
     RadioButton mainRadiobuttonCourse;
     // @Bind(R.id.main_radiobutton_practice)
@@ -160,7 +158,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
                 break;
             case R.id.main_radiobutton_me:
                 if (fragmentMe == null) {
-                    fragmentMe = new FragmentMe();
+                    fragmentMe = new GalleryFragment();
                     ft.add(R.id.main_viewPager, fragmentMe).show(fragmentMe);
                 } else ft.show(fragmentMe);
                 toolbarSearch.setVisibility(View.GONE);

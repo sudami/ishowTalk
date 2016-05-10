@@ -47,6 +47,7 @@
                 android:text="本班"
                 android:minWidth="70dp"
                 android:button="@null"
+
                 android:textColor="@color/select_members_textcolor"
                 android:textSize="14sp" />
 

@@ -4,17 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
-
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:id="@+id/Toolbar"
     app:title="" >
     <!--app:layout_scrollFlags="scroll|enterAlways"-->
+
+  <include layout="@layout/activity_appbar_radiogroup"></include>
     <TextView
         android:id="@+id/course_title_name"
         style="@style/text_title_style"
         android:layout_gravity="left"
-        android:text="人员选择" />
+        />
 
     <TextView
         android:id="@+id/course_title_name_center"

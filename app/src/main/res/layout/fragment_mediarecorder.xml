@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/media_fragment_top_titlebar"
-    android:layout_height="0dp"
-    android:layout_weight="1">
+    android:layout_height="match_parent"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,6 +30,15 @@
             android:text="00:00"
             android:drawablePadding="5dp"
             />
+
+        <ImageView
+            android:id="@+id/fragment_media_top_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_camara_menu_switch"></ImageView>
     </RelativeLayout>
    <RelativeLayout
        android:layout_width="match_parent"
@@ -43,10 +52,11 @@
            android:layout_height="match_parent"
            android:layout_weight="1"/>
        <ProgressBar
+           android:id="@+id/fragment_media_ProgressBar"
            android:layout_width="match_parent"
            android:layout_height="3dp"
            android:max="100"
-           android:progress="1"
+           android:progress="2"
            android:layout_alignParentBottom="true"
            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
    </RelativeLayout>
@@ -58,12 +68,15 @@
           android:layout_gravity="center"
           android:orientation="horizontal">
           <ImageView
+              android:id="@+id/fragment_media_delete"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="40dp"
+              android:visibility="gone"
               android:src="@drawable/icon_shanchushipin"/>
 
           <ImageView
+              android:id="@+id/fragment_media_recorder"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="40dp"
@@ -71,11 +84,13 @@
               android:src="@drawable/icon_kaishiluzhi"/>
 
           <ImageView
+              android:id="@+id/fragment_media_save"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="40dp"
               android:layout_alignParentRight="true"
               android:layout_marginRight="40dp"
+              android:visibility="gone"
               android:src="@drawable/icon_baocunshipin"/>
       </RelativeLayout>
 </LinearLayout>

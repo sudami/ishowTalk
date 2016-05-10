@@ -151,6 +151,15 @@ public class TimeUtil {
 		return hours+"h"+":"+realMins+"mins";
 	}
 
+	public static String getMinandSeconds(long time) {
+
+		int seconds = (int) (time/1000%60);
+		int mins= (int) (time/1000/60);
+
+		return (mins<10?"0"+mins:mins)+":"+(seconds<10?"0"+seconds:seconds);
+
+	}
+
 	/** 获取聊天时间：因为sdk的时间默认到秒故应该乘1000
 	  * @Title: getChatTime
 	  * @Description: TODO

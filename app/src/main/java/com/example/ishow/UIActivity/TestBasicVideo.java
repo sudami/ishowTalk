@@ -74,10 +74,10 @@ public class TestBasicVideo extends Activity implements MediaRecorder.OnErrorLis
             }
         });
 
-        Intent intent = new Intent();
-        intent.setType("video/*");//选择视频
+       /* Intent intent = new Intent();
+        intent.setType("video*//*");//选择视频
         intent.setAction(Intent.ACTION_PICK);//使用Intent.ACTION_GET_CONTENT这个Action //取得相片后返回本画面
-        startActivityForResult(intent, 1000);
+        startActivityForResult(intent, 1000);*/
     }
 
 
@@ -87,22 +87,23 @@ public class TestBasicVideo extends Activity implements MediaRecorder.OnErrorLis
         if (recorder==null){
             recorder = new MediaRecorder();
             camera.unlock();
+           // camera.stopPreview();
             recorder.setCamera(camera);
-            camera.stopPreview();
-            recorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+            recorder.setPreviewDisplay(mSurfaceHolder.getSurface());
             recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
            // recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
             //设置文件输出格式
            // recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             //设置视频编码方式
         //    recorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
 
-            recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_480P));
-            recorder.setVideoFrameRate(30);
-            String videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.3gp";
+            recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
+            recorder.setVideoEncodingBitRate(1024 * 1024);
+            //recorder.setVideoFrameRate(20);
+            String videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.mp4";
             recorder.setOutputFile(videoOutPath);
-            recorder.setPreviewDisplay(mSurfaceHolder.getSurface());
-            recorder.setVideoSize(176,144);
+            recorder.setVideoSize(320,240);
             recorder.setOnErrorListener(this);
         }
         try {

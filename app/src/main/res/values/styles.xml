@@ -34,8 +34,8 @@
     </style>
 
     <style name="PopupAnimation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_top_pop</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom_pop</item>
     </style>
 
 <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -110,8 +110,8 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:background">#00000000</item>
-        <item name="android:windowEnterAnimation">@anim/slide_in_from_top</item>
-        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+        <item name="android:windowEnterAnimation">@anim/slide_in_from_top_pop</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_to_bottom_pop</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
@@ -152,4 +152,5 @@
     <style name="mediaRecorderActivity_style" parent="AppTheme">
         <item name="colorAccent">#ff3a2f</item>
     </style>
+
 </resources>

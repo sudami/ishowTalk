@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RadioGroup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="14dp"
+    android:orientation="horizontal"
+    android:visibility="gone"
+    android:background="@drawable/radiogroup_white_stroke"
+    >
+
+
+        <RadioButton
+            android:id="@+id/newAll"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:minWidth="70dp"
+            android:gravity="center"
+            android:text="推荐视频"
+            android:background="@drawable/radiogroup_leftbutton_selector"
+            android:button="@null"
+            android:checked="true"
+            android:textColor="@color/radiogroup_button_textcolor"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="10px"
+            android:background="@color/white"/>
+        <RadioButton
+            android:id="@+id/newGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:background="@drawable/radiogroup_middlebutton_selector"
+            android:text="最新上传"
+            android:minWidth="70dp"
+            android:button="@null"
+            android:textColor="@color/radiogroup_button_textcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="1px"
+            android:background="@android:color/white"/>
+
+        <RadioButton
+            android:id="@+id/newFans"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="热门视频"
+            android:minWidth="70dp"
+            android:background="@drawable/radiogroup_rightbutton_selector"
+            android:button="@null"
+            android:textColor="@color/radiogroup_button_textcolor"
+            android:textSize="14sp" />
+</RadioGroup>
