@@ -32,6 +32,7 @@ import com.example.ishow.UIActivity.SettingActivity;
 import com.example.ishow.UIActivity.TestBasicVideo;
 import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.Utils.TimeUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import org.xutils.common.util.LogUtil;
 import org.xutils.x;
@@ -163,20 +164,12 @@ public class FragmentMe extends BaseFragment {
     public void onResume() {
         selfGuanzhu.setText(SharePrefrence.getInstance().getFansSize(getActivity()));
         selfLuyin.setText(SharePrefrence.getInstance().getAudioSize(getActivity()));
+        MobclickAgent.onPageStart("首页_更多_resume");
         super.onResume();
     }
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==101)
-            bindData2UI();
-        /*Uri uriVideo = data.getData();
-        Cursor cursor=context.getContentResolver().query(uriVideo, null, null, null, null);
-        if (cursor.moveToNext()) {
-                                         *//* _data：文件的绝对路径 ，_display_name：文件名 *//*
-            String strVideoPath = cursor.getString(cursor.getColumnIndex("_data"))+cursor.getString(cursor.getColumnIndex("_display_name"));
-            Toast.makeText(context, strVideoPath, Toast.LENGTH_SHORT).show();
-        }*/
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_更多_onPause");
+        super.onPause();
     }
 }

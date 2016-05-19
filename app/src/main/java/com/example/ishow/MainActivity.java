@@ -60,12 +60,6 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
     RadioButton mainRadiobuttonPractice;
     // @Bind(R.id.main_radiobutton_msg)
     RadioButton mainRadiobuttonMsg;
-    //@Bind(R.id.main_radiobutton_me)
-    // RadioButton mainRadiobuttonMe;
-    // @Bind(R.id.main_viewPager)
-    //  FrameLayout mainViewPager;
-    // @Bind(R.id.radioGroup)
-    // RadioGroup radioGroup;
     android.support.v7.widget.Toolbar Toolbar;
     @Bind(R.id.main_radiobutton_me)
     RadioButton mainRadiobuttonMe;

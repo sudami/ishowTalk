@@ -31,6 +31,7 @@ import com.example.ishow.iShowConfig.iShowConfig;
 import com.example.ishow.justalk.cloud.juscall.MtcCallDelegate;
 import com.justalk.cloud.lemon.MtcMdm;
 import com.justalk.cloud.lemon.MtcMediaConstants;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -445,5 +446,15 @@ public class FragmentPractice extends BaseFragment implements
         }
     }
 
+    @Override
+    public void onResume() {
+        MobclickAgent.onPageStart("首页_对练_resume");
+        super.onResume();
+    }
 
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_对练_onPause");
+        super.onPause();
+    }
 }

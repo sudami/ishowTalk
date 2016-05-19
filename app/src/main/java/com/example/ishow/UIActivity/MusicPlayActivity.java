@@ -219,7 +219,7 @@ public class MusicPlayActivity extends AppBaseCompatActivity implements SeekBar.
                 // startService();
                 if (musicPlayService != null) {
                     cancelAvartAnimation();
-                    musicPlayService.pausePlay();
+                    musicPlayService.pauseOrPlay();
                 }
                 break;
             //后一曲

@@ -16,6 +16,7 @@ import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.Bean.MusicEntry;
 import com.example.ishow.R;
 import com.example.ishow.UIView.MaterialDialog;
+import com.example.ishow.Utils.ChatManager;
 import com.example.ishow.Utils.Interface.RequestPermissionInterface;
 import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.Utils.StorageUtils;
@@ -53,11 +54,13 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
     private float tempo = 0.5f;
     private float pitch = 0;
     private float rate = 0;
+    private long lastSysTime;//当前课时上一次 记录时间的时间点
 
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         if (musicEntry == null)
             musicEntry = new MusicEntry();
 
@@ -77,6 +80,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
                         if (player != null)
                             if (!player.isPlaying()) {
                                 player.pause();
+                                //被暂停了 也应该重新初始化一下时间
+                                lastSysTime = System.currentTimeMillis();
                                 currentPosition = player.getCurrentPosition();
                             }
                         //很快恢复
@@ -132,6 +137,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
         if (this.courseId == courseId)
             return;
         this.courseId = courseId;
+        //如果是两个不同的课时 则应该重新初始化一下时间
+        lastSysTime = System.currentTimeMillis();
         startCheck(context, courseDIR);
     }
 
@@ -179,6 +186,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
     }
 
     public void startNewMusic(int musicIndex) {
+        if (handler!=null)
+            handler.removeCallbacks(runnable);
 
         if (player != null)
             if (player.isPlaying())
@@ -203,11 +212,7 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
                 ToastUtil.showToast(getBaseContext(),"没有可播放的音频文件,请清除后重新下载.");
                 return;
             }
-           /* File parent = file.getParentFile();
-            File parentFile = parent.getParentFile();
-            String parentPath = parentFile.getPath();
-            LogUtil.e(parentPath.substring(parentPath.lastIndexOf("/")+1)+"--"+courseTitle);
-            SharePrefrence.getInstance().putPlayingCourseIdAndDir(context,parentPath.substring(parentPath.lastIndexOf("/")+1),courseId,courseDIR);*/
+
             player.setDataSource(path);
             player.setOnPreparedListener(this);
             player.setOnErrorListener(this);
@@ -215,8 +220,6 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
             player.setOnCompletionListener(this);
             player.prepare();
             player.start();
-            //player.start();
-            //player.setDataSource(mPaths.get(musicIndex));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -236,7 +239,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
         }
     }
 
-    public void pausePlay() {
+    //MusicPlayActivity 调用此方法 开始或者暂停播放
+    public void pauseOrPlay() {
         if (player != null) {
             if (player.isPlaying()) {
                 player.pause();
@@ -246,6 +250,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
                 currentPosition = player.getCurrentPosition();
             } else {
                 musicEntry.setState(1);
+                //被暂停后开始 也应该重新初始化一下时间
+                lastSysTime = System.currentTimeMillis();
                 player.start();
                 handler.sendEmptyMessage(0);
                 EventBus.getDefault().post(musicEntry);
@@ -259,6 +265,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
         if (player != null)
             if (player.isPlaying()) {
                 handler.removeCallbacks(runnable);
+                //被暂停了 也应该重新初始化一下时间
+                lastSysTime = System.currentTimeMillis();
                 player.pause();
             }
     }
@@ -301,9 +309,10 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
         if (musicIndex >= 1) {
             musicIndex--;
             if (player != null)
-                if (player.isPlaying())
+                if (player.isPlaying()) {
                     player.pause();
-            player.stop();
+                    player.stop();
+                }
             startNewMusic(musicIndex);
         }
     }
@@ -312,6 +321,8 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            //记录当前课时练习时间
+            updateCurrentCoursePracticeTime();
             if(msg.what==-1){
                 resetPlayerStartPlayFile(msg);
             }else{
@@ -328,6 +339,22 @@ public class MusicPlayService extends Service implements MediaPlayer.OnSeekCompl
             }
         }
     };
+
+
+    ChatManager manager=null;
+    //记录当前课时练习时间
+    private void updateCurrentCoursePracticeTime() {
+        long time = (System.currentTimeMillis() - lastSysTime);
+
+        if (time<5000) return ;
+        //更新当前课时练习时间hanlder回调上一次 记录的时间
+        // 然后保存数据库 小于5000  就放行
+        if (time>=5000) lastSysTime =System.currentTimeMillis();
+        if (manager==null)manager = new ChatManager();
+        manager.saveCoursePracticeEntry(courseId, (int) (time/1000));
+
+
+    }
 
     private void resetPlayerStartPlayFile(Message msg) {
         dialog.cancelDialog();

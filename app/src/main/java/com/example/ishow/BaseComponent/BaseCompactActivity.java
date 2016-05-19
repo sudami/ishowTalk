@@ -30,6 +30,7 @@ import com.example.ishow.Utils.SystemBarTintManager;
 import com.example.ishow.Utils.ToastUtil;
 import com.example.ishow.Xutils3.XHttpUtils;
 import com.example.ishow.iShowConfig.iShowConfig;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -181,4 +182,15 @@ public abstract class BaseCompactActivity extends AppCompatActivity implements V
         }
     }
     //*****************************************封装了  获取验证码的 功能*****************************************//
+    protected void onResume() {
+
+        MobclickAgent.onResume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

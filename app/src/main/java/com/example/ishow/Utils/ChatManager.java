@@ -4,8 +4,11 @@ import android.text.TextUtils;
 
 import com.example.ishow.Application.iShowTalkApplication;
 import com.example.ishow.Bean.Conversation;
+import com.example.ishow.Bean.CoursePracticeEntry;
 import com.example.ishow.Bean.MsgEntry;
 import com.example.ishow.Bean.UserEntry;
+import com.example.ishow.Xutils3.XHttpUtils;
+import com.example.ishow.iShowConfig.iShowConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -173,5 +176,88 @@ public class ChatManager {
             e.printStackTrace();
         }
         return unreadCount;
+    }
+
+    /**
+     *   根据 service里传过来的 courseId 从数据库检索 该Id对应的  CoursePracticeEntry对象
+     * @param courseId
+     * @return
+     */
+    public CoursePracticeEntry getCurrentPracticeEntry(int courseId)
+    {   if (dbManager == null)
+            dbManager = x.getDb(iShowTalkApplication.getInstance().initDbConfig());
+        try {
+            Selector<CoursePracticeEntry> selector = dbManager.selector(CoursePracticeEntry.class);
+            if (selector!=null)
+                return selector.where("courseId","=",courseId+"").findFirst();
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 根据 课时courseid updateTime来 更新该courseid对应对象的数据
+     * @param courseId
+     * @param updateTime
+     */
+    public void saveCoursePracticeEntry(int courseId,int updateTime)
+    {
+        CoursePracticeEntry entry = getCurrentPracticeEntry(courseId);
+        if (entry!=null)
+        {
+            entry.setPracticeTime(entry.getPracticeTime()+updateTime);
+            try {
+                dbManager.update(entry,"practiceTime");
+            } catch (DbException e) {
+                e.printStackTrace();
+            }
+        }else {
+            CoursePracticeEntry emptyEntry = new CoursePracticeEntry();
+            emptyEntry.setCourseId(courseId);
+            emptyEntry.setPracticeTime(updateTime);
+            try {
+                dbManager.saveBindingId(emptyEntry);
+            } catch (DbException e) {
+                e.printStackTrace();
+            }
+        }}
+
+
+    public void uploadCoursePractice(String uid)
+    {
+        List<CoursePracticeEntry> historys=null;
+        StringBuilder courseIdBuilder= new StringBuilder();
+        StringBuilder practiceBuilder = new StringBuilder();
+        if (dbManager == null)
+            dbManager = x.getDb(iShowTalkApplication.getInstance().initDbConfig());
+        try {
+            List<CoursePracticeEntry> all = dbManager.findAll(CoursePracticeEntry.class);
+           if (all!=null){
+               if (all.size()>0){
+                   for (CoursePracticeEntry entry: all) {
+                       courseIdBuilder.append(entry.getCourseId());
+                       practiceBuilder.append(entry.getPracticeTime());
+                       courseIdBuilder.append("@");
+                       practiceBuilder.append("@");
+                   }
+                   //一次 更新时间后删除该表  防止多次上传 时间错乱
+                   dbManager.dropTable(CoursePracticeEntry.class);
+                   JSONObject object = new JSONObject();
+                   try {
+                       object.put("uid",uid);
+                       object.put("practicetime",  practiceBuilder.toString());
+                       object.put("flag", "0");
+                       object.put("practicecid", courseIdBuilder.toString());
+                       XHttpUtils.getInstace().getValue(iShowConfig.uploadCoursePracticeTime,object,null);
+                   } catch (JSONException e) {
+                       e.printStackTrace();
+                   }
+
+               }
+           }
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
     }
 }

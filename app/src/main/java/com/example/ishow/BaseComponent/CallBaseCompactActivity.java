@@ -10,6 +10,7 @@ import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.justalk.cloud.juscall.MtcCallDelegate;
 import com.justalk.cloud.lemon.MtcMdm;
 import com.justalk.cloud.lemon.MtcMediaConstants;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,5 +55,16 @@ public class CallBaseCompactActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return local.toString();
+    }
+    protected void onResume() {
+
+        MobclickAgent.onResume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

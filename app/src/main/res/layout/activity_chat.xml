@@ -9,7 +9,6 @@
     tools:context=".UIActivity.CourseActivity">
 
     <include layout="@layout/activity_appbar"></include>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +22,7 @@
             android:scrollbarStyle="insideOverlay"
             android:layout_weight="1"
             android:scrollbars="vertical"
+            android:transcriptMode="normal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             ptr:ptrAnimationStyle="flip"
             ptr:ptrDrawable="@drawable/default_ptr_flip"></com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView>

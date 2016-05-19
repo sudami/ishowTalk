@@ -55,7 +55,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".UIActivity.SplashActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:theme="@style/AppTheme.NoActionBar">
@@ -148,7 +148,7 @@
         </activity>
         <!--聊天界面-->
         <activity android:name=".UIActivity.ChatActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppThemeChatNormalStyle">
         </activity>
         <!--轮播条-->
@@ -170,9 +170,9 @@
             android:windowSoftInputMode="adjustPan"
             >
         </activity>
-      <!--  &lt;!&ndash;视频通话&ndash;&gt;
+
         <activity
-            android:name=".UIActivity.TestBasicVideo"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"

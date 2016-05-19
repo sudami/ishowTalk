@@ -35,6 +35,7 @@ import com.example.ishow.R;
 import com.example.ishow.Utils.PixlesUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
+import com.umeng.analytics.MobclickAgent;
 
 import org.xutils.common.util.LogUtil;
 
@@ -351,5 +352,17 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
     public void onBoxChecked(boolean checked, int position) {
         fragmentGalleryTopUpload.setEnabled(checked);
         fragmentGalleryTopUpload.setAlpha(checked?1.0f:0.5f);
+    }
+
+    @Override
+    public void onResume() {
+        MobclickAgent.onPageStart("首页_图库视频选择_resume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_图库视频选择_onPause");
+        super.onPause();
     }
 }

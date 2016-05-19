@@ -23,6 +23,7 @@ import com.example.ishow.Utils.SwitchAnimationUtil;
 import com.example.ishow.Xutils3.XHttpUtils;
 import com.example.ishow.iShowConfig.iShowConfig;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -167,5 +168,17 @@ public class SelectMembersFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onResume() {
+        MobclickAgent.onPageStart("首页_人员选择-本校本班_resume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_人员选择-本校本班_onPause");
+        super.onPause();
     }
 }

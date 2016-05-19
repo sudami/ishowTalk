@@ -30,6 +30,7 @@ import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.ViewFlow.CircleFlowIndicator;
 import com.example.ishow.ViewFlow.ExtendViewFlow;
 import com.example.ishow.iShowConfig.iShowConfig;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -127,10 +128,9 @@ public class FragmentCourse extends BaseFragment {
                 if (musicPlayService!=null)
                 {
                     if (musicPlayService.isPlaying()){
-                        musicPlayService.pausePlay();
+                        musicPlayService.pauseOrPlay();
                         shouyeBofang.setImageResource(R.mipmap.shouye_play);
                     }else {
-
                         musicPlayService.startPlayByShouye(context,lastPlayedCourseEntry.getDirPath(),lastPlayedCourseEntry.getId());
                         shouyeBofang.setImageResource(R.mipmap.shouye_pause);
                     }
@@ -171,6 +171,14 @@ public class FragmentCourse extends BaseFragment {
                 }else shouyeBofang.setImageResource(R.mipmap.shouye_play);
             }else  shouyeBofang.setImageResource(R.mipmap.shouye_play);
         }
+        MobclickAgent.onPageStart("首页_课程_resume");
         super.onResume();
+    }
+
+
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_课程_onPause");
+        super.onPause();
     }
 }

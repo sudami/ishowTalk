@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -135,6 +136,17 @@ public class RegisterActivity extends BaseCompactActivity implements View.OnClic
                     @Override
                     public void onSuccess(String result) {
                         MaterialDialog.getInstance().cancelDialog();
+                        JSONObject object = new JSONObject();
+                        try {
+                            if (object.getInt("code")==1)
+                            {
+                                startActivity(LoginActivity.class);
+                                ToastUtil.showToast(RegisterActivity.this,object.getString("msg"));
+                                ActivityCompat.finishAfterTransition(RegisterActivity.this);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override

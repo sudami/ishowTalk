@@ -49,8 +49,8 @@ public class XHttpUtils {
                 public void onSuccess(String result) {
                     if (callBack != null) {
                         httpCallBack = callBack;
+                        httpCallBack.onSuccess(result);
                     }
-                    httpCallBack.onSuccess(result);
                     LogUtil.e(result);
                 }
 
@@ -59,9 +59,10 @@ public class XHttpUtils {
 
                     if (callBack != null) {
                         httpCallBack = callBack;
+                        httpCallBack.onError(ex.getMessage());
                     }
                     // LogUtil.e(ex.getMessage());
-                    httpCallBack.onError(ex.getMessage());
+
                 }
 
                 @Override

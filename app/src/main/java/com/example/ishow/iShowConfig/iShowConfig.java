@@ -61,6 +61,9 @@ public class iShowConfig {
     //获取开启开屏页图片
     public static final String getFlashImage=SERVER_URL+"/common/getIndexPicture?code=9017b73b14e440d938201a64c2ec95df&data=";
 
+    //上传课时练习时间
+    public static final String uploadCoursePracticeTime = SERVER_URL+"/talk/recordUseTime?code=f4e6ed553f2e9552a66960241d98a649&data=";
+
     //*****************************获取课程信息时附带的课程id*******************************************//
     public static final String COURSEID_BY_PRIMARY = "37";
     public static final String COURSEID_BY_MIDDLE = "38";

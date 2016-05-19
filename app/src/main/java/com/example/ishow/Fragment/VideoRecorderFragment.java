@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.R;
 import com.example.ishow.Utils.TimeUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.IOException;
 
@@ -274,5 +275,17 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     @Override
     public void onError(MediaRecorder mr, int what, int extra) {
 
+    }
+
+    @Override
+    public void onResume() {
+        MobclickAgent.onPageStart("录视频_resume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("录视频_onPause");
+        super.onPause();
     }
 }

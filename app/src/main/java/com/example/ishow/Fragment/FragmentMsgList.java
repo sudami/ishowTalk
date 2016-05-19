@@ -20,6 +20,7 @@ import com.example.ishow.R;
 import com.example.ishow.UIActivity.ChatActivity;
 import com.example.ishow.Utils.ChatManager;
 import com.example.ishow.Utils.SharePrefrence;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +95,12 @@ public class FragmentMsgList extends BaseFragment implements AdapterView.OnItemC
     @Override
     public void onResume() {
         getConversationListFromDb();
+        MobclickAgent.onPageStart("首页_消息列表_resume");
         super.onResume();
+    }
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_消息列表_onPause");
+        super.onPause();
     }
 }

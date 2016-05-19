@@ -58,5 +58,6 @@ dependencies {
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
     compile 'com.kevin:pulltorefresh:1.0.7'
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
     compile files('libs/Xutils.jar')
 }

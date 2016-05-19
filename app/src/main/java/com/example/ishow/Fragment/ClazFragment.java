@@ -26,6 +26,7 @@ import com.example.ishow.Xutils3.XHttpUtils;
 import com.example.ishow.iShowConfig.iShowConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -133,5 +134,17 @@ public class ClazFragment extends BaseFragment implements AdapterView.OnItemClic
         Intent intent = new Intent(context, PersonalCenterActivity.class);
         intent.putExtras(bundle);
         ActivityCompat.startActivity((PracticeRankActivity)context,intent, ActivityOptionsCompat.makeSceneTransitionAnimation((PracticeRankActivity)context).toBundle());
+    }
+
+    @Override
+    public void onResume() {
+        MobclickAgent.onPageStart("首页_人员选择-本校本班_resume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        MobclickAgent.onPageStart("首页_人员选择-本校本班_onPause");
+        super.onPause();
     }
 }
