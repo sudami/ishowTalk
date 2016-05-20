@@ -140,7 +140,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
-            recorder.setVideoEncodingBitRate(1024 * 1024);
+            recorder.setVideoEncodingBitRate(1024 * 1024*10);
             //recorder.setVideoFrameRate(20);
             String videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.mp4";
             recorder.setOutputFile(videoOutPath);

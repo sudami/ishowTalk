@@ -15,7 +15,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.R;
+import com.example.ishow.Utils.Interface.RequestPermissionInterface;
 
 import org.xutils.common.util.LogUtil;
 
@@ -23,7 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class TestBasicVideo extends Activity implements MediaRecorder.OnErrorListener, SurfaceHolder.Callback, Camera.AutoFocusCallback {
+public class TestBasicVideo extends AppBaseCompatActivity implements MediaRecorder.OnErrorListener, SurfaceHolder.Callback, Camera.AutoFocusCallback {
 
 
 
@@ -103,7 +105,7 @@ public class TestBasicVideo extends Activity implements MediaRecorder.OnErrorLis
             //recorder.setVideoFrameRate(20);
             String videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.mp4";
             recorder.setOutputFile(videoOutPath);
-            recorder.setVideoSize(320,240);
+            recorder.setVideoSize(480,320);
             recorder.setOnErrorListener(this);
         }
         try {
@@ -121,20 +123,30 @@ public class TestBasicVideo extends Activity implements MediaRecorder.OnErrorLis
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+       // startPreview();
+        checkPermissonForCamera(new RequestPermissionInterface() {
+            @Override
+            public void onPermissionRequestResult(boolean result, boolean first) {
+                if (result)startPreview();
+            }
+        });
+    }
+
+    private void startPreview() {
         if (camera==null)camera= Camera.open();
         try {
             camera.setPreviewDisplay(mSurfaceHolder);
             camera.setDisplayOrientation(90);
             Camera.Parameters parameters = camera.getParameters();
-            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-            camera.autoFocus(null);
+            parameters.setPreviewSize(480,320);
+            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+           // camera.autoFocus(null);
             camera.setParameters(parameters);
             camera.startPreview();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int w, int h) {

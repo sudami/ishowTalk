@@ -1,6 +1,8 @@
 package com.example.ishow.BaseComponent;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.usage.UsageEvents;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -171,14 +173,17 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
      * @param permission
      */
     public void checkPermissonForStrorage(RequestPermissionInterface permission) {
+        if(!isAndroidLoppin()){
+            permissionInterface.onPermissionRequestResult(true,false);
+            return;
+        }
         if (permission != null) {
             permissionInterface = permission;
         }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_EXTERNAL_STORAGE},
+                            Manifest.permission_group.STORAGE},
                     iShowConfig.Manifest_permission_EXTERNAL_STORAGE
             );
         } else {
@@ -186,13 +191,12 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
         }
     }
     public void checkPermissonForRecord(RequestPermissionInterface permission) {
-
-        if (permission != null) {
-            permissionInterface = permission;
-        }
         if(!isAndroidLoppin()){
             permissionInterface.onPermissionRequestResult(true,false);
             return;
+        }
+        if (permission != null) {
+            permissionInterface = permission;
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) !=PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -204,33 +208,38 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void checkPermissonForCamera(RequestPermissionInterface permission){
+        if(!isAndroidLoppin()){
+            permissionInterface.onPermissionRequestResult(true,false);
+            return;
+        }
+        if (permission != null) {
+            permissionInterface = permission;
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.CAMERA) != PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission_group.CAMERA,},
+                    iShowConfig.Manifest_permission_CAMERA
+            );
+        } else {
+            permissionInterface.onPermissionRequestResult(true,false);
+        }
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == iShowConfig.Manifest_permission_EXTERNAL_STORAGE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (permissionInterface != null)
-                    permissionInterface.onPermissionRequestResult(true,true);
+        onRequestPermissionsResult(permissions[0], grantResults[0]);
+    }
 
-            } else {
-                if (permissionInterface != null)
-                    permissionInterface.onPermissionRequestResult(false,true);
-                //permissionInterface.onPermissionRequestResult(false);
-                //EventBus.getDefault().post(iShowConfig.Manifest_permission_EXTERNAL_STORAGE_result_false);
-                Toast.makeText(this, permissions[0] + "权限被禁用", Toast.LENGTH_SHORT).show();
-            }
-        }else if(requestCode == iShowConfig.Manifest_permission_RECORD_AUDIO){
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (permissionInterface != null)
-                    permissionInterface.onPermissionRequestResult(true,true);
-
-            } else {
-                if (permissionInterface != null)
-                    permissionInterface.onPermissionRequestResult(false,true);
-                //permissionInterface.onPermissionRequestResult(false);
-                //EventBus.getDefault().post(iShowConfig.Manifest_permission_EXTERNAL_STORAGE_result_false);
-                Toast.makeText(this, permissions[0] + "权限被禁用", Toast.LENGTH_SHORT).show();
-            }
+    private void onRequestPermissionsResult(String permission, int grantResult) {
+        if (grantResult == PackageManager.PERMISSION_GRANTED) {
+            if (permissionInterface != null)
+                permissionInterface.onPermissionRequestResult(true,true);
+        } else {
+            if (permissionInterface != null)
+                permissionInterface.onPermissionRequestResult(false,true);
+            Toast.makeText(this, permission + "权限被禁用", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -239,7 +248,6 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
         MobclickAgent.onResume(this);
         super.onResume();
     }
-
     @Override
     protected void onPause() {
         super.onPause();

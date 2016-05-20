@@ -77,6 +77,7 @@ public class iShowConfig {
     /*权限相关*/
     public static int Manifest_permission_EXTERNAL_STORAGE = 0;
     public static int Manifest_permission_RECORD_AUDIO = 1;
+    public static int Manifest_permission_CAMERA= 2;
     public static final String ExitAPPBroadCastReciver = "com.example.ishow.ExitAPPBroadCastReciver";
 
     /*排行榜相关*/
