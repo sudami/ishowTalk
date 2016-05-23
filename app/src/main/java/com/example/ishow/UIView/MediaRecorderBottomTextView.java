@@ -55,18 +55,19 @@ public class MediaRecorderBottomTextView extends TextView {
            if (paint==null)
            {
                paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-               paint.setColor(Color.parseColor("#ff3a2f"));
-               paint.setStyle(Paint.Style.FILL);
-               paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-               paint.setStrokeWidth(PixlesUtils.dip2px(context,3));
            }
+           paint.setStyle(Paint.Style.FILL);
+           paint.setColor(Color.parseColor("#ff3a2f"));
+           paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+           paint.setStrokeWidth(PixlesUtils.dip2px(context,3));
            canvas.drawLine(PixlesUtils.dip2px(context,10),getMeasuredHeight()-PixlesUtils.dip2px(context,3),getMeasuredWidth()-PixlesUtils.dip2px(context,10),getMeasuredHeight()-PixlesUtils.dip2px(context,3),paint);
        }
         else
        {
-           if (paint==null)
+           if (paint!=null)
            {
-               paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+               paint.setColor(Color.parseColor("#2b2d32"));
+               paint.setStyle(Paint.Style.FILL);
                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
                canvas.drawPaint(paint);
            }

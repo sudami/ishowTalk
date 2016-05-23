@@ -383,7 +383,7 @@ public class FragmentPractice extends BaseFragment implements
 
     private void startCallactivity(UserEntry recentMsg) {
         MtcMdm.Mtc_MdmAnSetBitrateMode(MtcMediaConstants.EN_MTC_AN_HIGH);//recentMsg.getMobile()
-        MtcCallDelegate.call("13429655539", makeIhsowUserRankCallJosnObject(),
+        MtcCallDelegate.call(recentMsg.getMobile(), makeIhsowUserRankCallJosnObject(),
                 makeIshowRecentCallJosnObject(recentMsg), true);
     }
     private String makeIhsowUserRankCallJosnObject() {

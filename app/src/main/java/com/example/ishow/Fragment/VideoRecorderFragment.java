@@ -1,5 +1,6 @@
 package com.example.ishow.Fragment;
 
+import android.content.DialogInterface;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
@@ -9,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -21,9 +23,14 @@ import android.widget.TextView;
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.R;
 import com.example.ishow.Utils.TimeUtil;
+import com.example.ishow.Utils.ToastUtil;
 import com.umeng.analytics.MobclickAgent;
 
+import org.xutils.common.util.LogUtil;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,7 +55,8 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
 
     private SurfaceHolder mSurfaceHolder;
     private Camera camera;
-    private MediaRecorder recorder;
+    private MediaRecorder recorder;//视频录制管理者
+    private String videoOutPath;//录制的视频文件 路径
 
     @Nullable
     @Override
@@ -78,18 +86,18 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     }
 
 
-    boolean record = true;
-
+    boolean record = true;//是否正在录制
     @OnClick({R.id.fragment_media_top_close, R.id.fragment_media_top_switch, R.id.fragment_media_delete, R.id.fragment_media_recorder, R.id.fragment_media_save})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fragment_media_top_close:
-                ActivityCompat.finishAffinity(((AppBaseCompatActivity) context));
+                ActivityCompat.finishAfterTransition(getActivity());
                 break;
             case R.id.fragment_media_top_switch:
                 switchCamera();
                 break;
             case R.id.fragment_media_delete:
+                fragmentMediaDelete();
                 resetFragmentMediaTop();
                 break;
             case R.id.fragment_media_recorder:
@@ -102,9 +110,48 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
                 }
                 break;
             case R.id.fragment_media_save:
-                resetFragmentMediaTop();
+                fragmentMediaUpload();
                 break;
         }
+    }
+
+    /***上传录制的文件*/
+    private void fragmentMediaUpload() {
+        /**如果正在录制视频 进步提示*/
+        if (record) {
+            ToastUtil.showToast(getActivity(), getString(R.string.shipinluzhi_stop_recod_first));
+            return;
+        }
+
+    }
+
+
+    /***放弃录制的文件*/
+    private void fragmentMediaDelete() {
+        /**如果正在录制视频 进步提示*/
+        if (record) {
+            ToastUtil.showToast(getActivity(), getString(R.string.shipinluzhi_stop_recod_first));
+            return;
+        }
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(getString(R.string.shipinluzhi_delete_file));
+        dialog.setPositiveButton(getString(R.string.shipinluzhi_delete_Y), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                File file = new File(videoOutPath);
+                if (file.exists())
+                    file.delete();
+                dialog.cancel();
+            }
+        });
+        dialog.setPositiveButton(getString(R.string.shipinluzhi_delete_N), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        dialog.create();
+        dialog.show();
     }
 
     private void resetFragmentMediaTop() {
@@ -140,11 +187,11 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_LOW));
-            recorder.setVideoEncodingBitRate(1024 * 1024*10);
+            recorder.setVideoEncodingBitRate(1024 * 1024);
             //recorder.setVideoFrameRate(20);
-            String videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.mp4";
+            videoOutPath = Environment.getExternalStorageDirectory() + "/DCIM/" + "111.mp4";
             recorder.setOutputFile(videoOutPath);
-            recorder.setVideoSize(320, 240);
+            recorder.setVideoSize(480, 320);
             recorder.setOnErrorListener(this);
         }
         try {
@@ -166,19 +213,20 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             super.handleMessage(msg);
             long time = System.currentTimeMillis() - recordSystemTime;
             fragmentMediaTopTime.setText(TimeUtil.getMinandSeconds(time));
-            fragmentMediaProgressBar.setProgress((int) (time/maxTime));
+            fragmentMediaProgressBar.setProgress((int) ((time*1.0f/maxTime)*100));
+            LogUtil.e(time+"fragmentMediaProgressBar");
             handler.postDelayed(runnable, 1000);
-            if (time>=2000)
-            {
-                fragmentMediaDelete.setVisibility(View.VISIBLE);
-                fragmentMediaSave.setVisibility(View.VISIBLE);
-                fragmentMediaDelete.setEnabled(false);
-                fragmentMediaDelete.setAlpha(0.5f);
-                fragmentMediaSave.setEnabled(false);
-                fragmentMediaSave.setAlpha(0.5f);
-            }
+            if (time>=2000) setMediaOperation(true);
         }
     };
+
+    private void setMediaOperation(boolean b) {
+        fragmentMediaDelete.setEnabled(b);
+        fragmentMediaDelete.setAlpha(b?1f:0.5f);
+        fragmentMediaSave.setEnabled(b);
+        fragmentMediaSave.setAlpha(b?1f:0.5f);
+    }
+
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -188,30 +236,19 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     /**
      * 切换前后摄像头
      */
-    int cameraFace = Camera.CameraInfo.CAMERA_FACING_BACK;
-
+    int cameraFace = 0;//  默认后置摄像头
     private void switchCamera() {
         int numberOfCameras = Camera.getNumberOfCameras();
         if (numberOfCameras <= 1) return;
-        Camera.CameraInfo cameraInfo = null;
-        for (int i = 0; i < numberOfCameras; i++) {
-            if (cameraFace == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                Camera.getCameraInfo(i, cameraInfo);
-                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-                    cameraFace = Camera.CameraInfo.CAMERA_FACING_FRONT;
-                    resetCamera();
-                    startPerview(mSurfaceHolder);
-                }
-            } else if (cameraFace == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-                Camera.getCameraInfo(i, cameraInfo);
-                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                    cameraFace = Camera.CameraInfo.CAMERA_FACING_BACK;
-                    resetCamera();
-                    startPerview(mSurfaceHolder);
-                }
-            }
+        if (cameraFace == 0) {
+            cameraFace = 1;
+            resetCamera();
+            startPerview(mSurfaceHolder);
+        } else if (cameraFace == 1) {
+            cameraFace = 0;
+            resetCamera();
+            startPerview(mSurfaceHolder);
         }
-
     }
 
     private void resetCamera() {
@@ -228,8 +265,32 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             camera.setDisplayOrientation(90);
             camera.setPreviewDisplay(holder);
             Camera.Parameters parameters = camera.getParameters();
-            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-            camera.autoFocus(null);
+            List<String> focusModes = parameters.getSupportedFocusModes();
+            if (focusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO))
+                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+            else if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)){
+                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                //camera.autoFocus(null);
+            }
+            List<Camera.Size> videoSizes = parameters.getSupportedVideoSizes();
+            /**fragmentMediaSurfaceView 宽高 比率*/
+            int surWidth = 1;
+            int surHeight = 1;
+            if (fragmentMediaSurfaceView!=null){
+                 surWidth  = fragmentMediaSurfaceView.getMeasuredWidth();
+                 surHeight = fragmentMediaSurfaceView.getMeasuredHeight();
+            }
+            float surRatio=1.0f;
+            surRatio = surWidth*1.0f/surHeight;
+            /**找出getSupportedVideoSizes中 与surfaceview  宽高比最接近的  不然会拉伸变形*/
+            for (Camera.Size size :videoSizes) {
+                if (Math.abs(size.width*1.0f/size.height - surRatio)<=0.25) {
+                    parameters.setPreviewSize(size.width,size.height);
+                    LogUtil.e(size.width+"--"+size.height);
+                    break;
+                }
+            }
+          //  camera.autoFocus(null);
             camera.setParameters(parameters);
             camera.startPreview();
         } catch (IOException e) {
@@ -239,6 +300,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        LogUtil.e(fragmentMediaSurfaceView.getMeasuredWidth()+"*****"+fragmentMediaSurfaceView.getMeasuredHeight());
         startPerview(holder);
     }
 
@@ -254,19 +316,26 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     }
 
     private void stopRealseCamera() {
+        if (recorder!=null)
+        {
+            recorder.stop();
+            recorder.reset();
+            recorder.release();
+            recorder=null;
+        }
         if (camera != null) {
-            camera.stopPreview();   //停止预览
+            camera.stopPreview();//停止预览
             camera.release();      //释放资源
             camera = null;
             mSurfaceHolder.removeCallback(this);
-            mSurfaceHolder = null;
-            fragmentMediaSurfaceView = null;
         }
     }
 
     @Override
     public void onDestroyView() {
         stopRealseCamera();
+        mSurfaceHolder = null;
+        fragmentMediaSurfaceView =null;
         handler.removeCallbacks(runnable);
         super.onDestroyView();
         ButterKnife.unbind(this);
@@ -280,11 +349,15 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     @Override
     public void onResume() {
         MobclickAgent.onPageStart("录视频_resume");
+        if (isPause) startPerview(mSurfaceHolder);
         super.onResume();
     }
 
+    private boolean isPause =false;
     @Override
     public void onPause() {
+        stopRealseCamera();
+        isPause= !isPause;
         MobclickAgent.onPageStart("录视频_onPause");
         super.onPause();
     }

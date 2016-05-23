@@ -230,7 +230,7 @@ public class ChatActivity extends CallBaseCompactActivity implements JustalkStat
                     object.put("fromImg", studentInfo.getImg());
                     object.put("fromPhone", studentInfo.getMobile());
                     object.put("fromName", studentInfo.getName());
-                    String userUri = MtcUser.Mtc_UserFormUri(MtcUserConstants.EN_MTC_USER_ID_USERNAME, "13429655539");//13429655539
+                    String userUri = MtcUser.Mtc_UserFormUri(MtcUserConstants.EN_MTC_USER_ID_USERNAME, chatEntry.getMobile());//13429655539
                     int info = MtcIm.Mtc_ImSendText(dbId, userUri, object.toString(), null);
                     if (info == MtcConstants.ZOK) {
                     } else if (info == MtcConstants.ZFAILED) {

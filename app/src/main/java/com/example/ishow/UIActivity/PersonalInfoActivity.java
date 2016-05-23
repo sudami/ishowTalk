@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
@@ -76,6 +77,7 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
         setContentView(R.layout.activity_psersonal_info);
         ButterKnife.bind(this);
         bindView2UI();
+        subitPersonInfoAvart();
     }
 
     private void bindView2UI() {
@@ -162,15 +164,25 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
     private void subitPersonInfoAvart() {
         dialog =new MaterialDialog();
         dialog.showDloag(this,getString(R.string.request_server));
-        RequestParams params =new RequestParams(iShowConfig.commitePersonAvart);
+        //ShowConfig.commitePersonAvart
+        RequestParams params =new RequestParams(iShowConfig.uploadVideo);
 
-        File file =new File(sdPath);
+       // Environment.getExternalStorageDirectory().getPath()+"/DCIM/111.mp4";
+        File file =new File( Environment.getExternalStorageDirectory().getPath()+"/DCIM/111.mp4");
+        LogUtil.e(file.getPath());
         if (file.exists()) {
             params.setMultipart(true);
+            params.setAutoResume(true);
             params.addBodyParameter("filename",file);
+            params.addBodyParameter("mediaTitle","2016-05-23");
+            params.addBodyParameter("mediaDescription","2016-05-23-描述");
+            params.addBodyParameter("mediaBelong","15555043403");
+            params.addBodyParameter("meidaIsTest","true");
+            params.addBodyParameter("mediaTeacherPhone","15555043403");
             x.http().post(params, new Callback.CommonCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
+                    LogUtil.e("onSuccess"+s);
                     try {
                         JSONObject o =new JSONObject(s);
                         if (o.getInt("code")==1){
@@ -181,13 +193,14 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        LogUtil.e(e.toString());
                         ToastUtil.makeSnack(avart, e.getMessage(),PersonalInfoActivity.this);
                     }
                 }
 
                 @Override
                 public void onError(Throwable throwable, boolean b) {
-                   // LogUtil.e(throwable.getMessage());
+                    LogUtil.e(throwable.getMessage());
                     ToastUtil.makeSnack(avart,throwable.getMessage(),PersonalInfoActivity.this);
 
                 }

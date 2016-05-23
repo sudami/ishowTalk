@@ -141,6 +141,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:alpha="0.5"
             android:background="@color/split_line_color"/>
 
         <!--文本练习-->
@@ -262,6 +263,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:alpha="0.5"
             android:background="@color/split_line_color"/>
         <!--视频对练-->
         <RelativeLayout
@@ -304,6 +306,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:alpha="0.5"
             android:background="@color/split_line_color"/>
         <!--设置-->
         <RelativeLayout

@@ -24,6 +24,7 @@ import com.example.ishow.MainActivity;
 import com.example.ishow.R;
 import com.example.ishow.UIActivity.FansActivity;
 import com.example.ishow.UIActivity.LocalCourseActivity;
+import com.example.ishow.UIActivity.MediaActivity;
 import com.example.ishow.UIActivity.PersonalCenterActivity;
 import com.example.ishow.UIActivity.PracticeHistoryActivity;
 import com.example.ishow.UIActivity.PracticeRankActivity;
@@ -127,7 +128,7 @@ public class FragmentMe extends BaseFragment {
             case R.id.shipinLayout:
                 //*********************************************************视频录制界面*************************************************//
                 optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(context, rootView.findViewById(R.id.icon_shipinduilian_text), "transitionName");
-                intent = new Intent(context, PracticeRankActivity.class);
+                intent = new Intent(context, MediaActivity.class);
                 ActivityCompat.startActivity(context,intent, optionsCompat.toBundle());
                 break;
             case R.id.jiluLayout:
@@ -145,7 +146,7 @@ public class FragmentMe extends BaseFragment {
                 intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
                 startActivityForResult(intent, 1000);*/
                 optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(context, rootView.findViewById(R.id.icon_shezhi_text), "transitionName");
-                intent = new Intent(context, TestBasicVideo.class);
+                intent = new Intent(context, SettingActivity.class);
                 ActivityCompat.startActivity(context,intent, optionsCompat.toBundle());
                 break;
             case R.id.fans_layout:

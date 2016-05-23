@@ -30,6 +30,17 @@
                 android:transitionName="transitionName"
                 android:text="title"
                 />
+
+            <ImageView
+                android:id="@+id/fram_container_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
+                android:minHeight="20dp"
+                android:layout_gravity="right"
+                android:src="@drawable/icon_shangchuanluzhi"
+                android:layout_marginRight="10dp"
+                />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

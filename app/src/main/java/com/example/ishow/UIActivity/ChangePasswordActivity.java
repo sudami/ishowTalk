@@ -12,9 +12,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ishow.BaseComponent.BaseCompactActivity;
+import com.example.ishow.Bean.UserEntry;
 import com.example.ishow.R;
 import com.example.ishow.UIView.MaterialDialog;
 import com.example.ishow.UIView.PasswordEditText;
+import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.Utils.SwitchAnimationUtil;
 import com.example.ishow.Utils.ToastUtil;
 import com.example.ishow.Xutils3.XHttpUtils;
@@ -83,6 +85,10 @@ public class ChangePasswordActivity extends BaseCompactActivity {
     public void onClick(View v) {
         super.onClick(v);
         hideSoftKeyBoard(passInputagain);
+        UserEntry studentInfo = SharePrefrence.getInstance().getStudentInfo(getApplicationContext());
+        if (studentInfo!=null)
+            if (studentInfo.getUserid()=="")
+                return;
         if (v.getId() == R.id.change_password) {
             if (TextUtils.equals(oldpassword.getText().toString(), "")) {
                 oldpassInput.setError(getString(R.string.error_password));
@@ -97,7 +103,7 @@ public class ChangePasswordActivity extends BaseCompactActivity {
                 JSONObject mJSONObject = new JSONObject();
                 try {
                     MaterialDialog.getInstance().showDloag(this,getString(R.string.request_server));
-                    mJSONObject.put("phone", "15555043403");
+                    mJSONObject.put("phone", studentInfo.getMobile());
                     mJSONObject.put("password", oldpassword.getText().toString());
                     mJSONObject.put("newspassword", password.getText().toString());
                     XHttpUtils.getInstace().getValue(iShowConfig.changgePassword, mJSONObject, new XHttpUtils.OnHttpCallBack() {

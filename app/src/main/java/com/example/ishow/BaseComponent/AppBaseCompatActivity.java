@@ -141,13 +141,6 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
         ActivityCompat.finishAfterTransition(this);
 
     }
-
-    @Override
-    public void onClick(View v) {
-       // startActivity(new Intent(this, LocalCourseActivity.class));
-        // ActivityCompat.finishAfterTransition(this);
-    }
-
     /**
      * 判断当前系统版本 是否在API23以上
      *
@@ -252,6 +245,11 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
     protected void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
 

@@ -56,8 +56,8 @@ public class MediaRecordActivity extends AppBaseCompatActivity {
         switch (id)
         {
             case R.id.media_recorder_shipin:
-                mediaRecorderShipin.setBottomLineVisibity(true);
-                mediaRecorderGallery.setBottomLineVisibity(false);
+                mediaRecorderShipin.setBottomLineVisibity(false);
+                mediaRecorderGallery.setBottomLineVisibity(true);
                 if (record==null)
                 {
                     record=new VideoRecorderFragment();
@@ -66,8 +66,8 @@ public class MediaRecordActivity extends AppBaseCompatActivity {
                 }else ft.show(record);
                 break;
             case R.id.media_recorder_gallery:
-                mediaRecorderShipin.setBottomLineVisibity(false);
-                mediaRecorderGallery.setBottomLineVisibity(true);
+                mediaRecorderShipin.setBottomLineVisibity(true);
+                mediaRecorderGallery.setBottomLineVisibity(false);
                 if (gallery==null)
                 {
                     gallery=new GalleryFragment();

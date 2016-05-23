@@ -6,10 +6,10 @@ package com.example.ishow.iShowConfig;
 public class iShowConfig {
 
     //测试服务器地址
-   // public static final String SERVER_URL = "http://120.26.219.135:8080";
+    public static final String SERVER_URL = "http://120.26.219.135:8080";
 
     //正式服务器地址
-    public static final String SERVER_URL = "http://fuduji.ishowedu.com";
+   // public static final String SERVER_URL = "http://fuduji.ishowedu.com";
     //首页获取轮播图地址 参数要传 用户手机号
     public static final String getBanner = SERVER_URL + "/common/getBannernVideo?code=3add718fff59a6ca93e57202fa45111d&data=";
     //获取初级 高级 中级 等课程列表信息
@@ -63,6 +63,8 @@ public class iShowConfig {
 
     //上传课时练习时间
     public static final String uploadCoursePracticeTime = SERVER_URL+"/talk/recordUseTime?code=f4e6ed553f2e9552a66960241d98a649&data=";
+    //上传视频文件
+    public static final String uploadVideo=SERVER_URL+"/common/upload_media?code=340e8215bcef19b1ba5dcf0278b532ee";
 
     //*****************************获取课程信息时附带的课程id*******************************************//
     public static final String COURSEID_BY_PRIMARY = "37";
@@ -86,7 +88,6 @@ public class iShowConfig {
 
     public static String talingUid ="";//正在会话的人的uid
     public static boolean chatISOpen =false;//是否正处于聊天界面
-    public static boolean isPlayed =false;//是否播放过
     public static String morentouxiang ="http://7xlm33.com1.z0.glb.clouddn.com/fuduji_morentouxiang.jpg";
 
 }
