@@ -68,12 +68,10 @@ public class MediaRecorderBottomTextView extends TextView {
            {
                paint.setColor(Color.parseColor("#2b2d32"));
                paint.setStyle(Paint.Style.FILL);
-               paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+               //paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
                canvas.drawPaint(paint);
            }
        }
-
-
         super.onDraw(canvas);
     }
 

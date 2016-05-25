@@ -65,6 +65,8 @@ public class iShowConfig {
     public static final String uploadCoursePracticeTime = SERVER_URL+"/talk/recordUseTime?code=f4e6ed553f2e9552a66960241d98a649&data=";
     //上传视频文件
     public static final String uploadVideo=SERVER_URL+"/common/upload_media?code=340e8215bcef19b1ba5dcf0278b532ee";
+    //获取个人视频 口测视频 娱乐视频{mediaBelong:15555043402,mediaOffset:0,isTest:0}
+    public static final String getPersonVideo =SERVER_URL+"/media/getPersonalList?code=10306e119a3c6d1db17152068b4a5feb&data=";
 
     //*****************************获取课程信息时附带的课程id*******************************************//
     public static final String COURSEID_BY_PRIMARY = "37";

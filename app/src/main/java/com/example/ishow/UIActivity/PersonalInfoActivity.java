@@ -179,6 +179,7 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
             params.addBodyParameter("mediaBelong","15555043403");
             params.addBodyParameter("meidaIsTest","true");
             params.addBodyParameter("mediaTeacherPhone","15555043403");
+            params.addBodyParameter("mediaTime","1000");
             x.http().post(params, new Callback.CommonCallback<String>() {
                 @Override
                 public void onSuccess(String s) {

@@ -31,7 +31,7 @@ public class NetworkConnection {
 	 * @param context
 	 * @return
 	 */
-	public boolean isWifiConnected(Context context) {
+	public static boolean isWifiConnected(Context context) {
 		if (context != null) {
 			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
 					.getSystemService(Context.CONNECTIVITY_SERVICE);

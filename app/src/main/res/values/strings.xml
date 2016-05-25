@@ -125,12 +125,15 @@
     <string name="search_freinds">搜索学员</string>
     <string name="search_no_keyowrods">请输入关键词</string>
     <!--视频录制-->
-    <string name="shipinluzhi_title">成长记录</string>
+    <string name="shipinluzhi_title">视频</string>
     <!--视频在录制时  点击了 删除文件按钮-->
     <string name="shipinluzhi_stop_recod_first">请先停止视频录制!</string>
     <string name="shipinluzhi_delete_file">是否删除该视频文件?</string>
     <string name="shipinluzhi_delete_Y">删除</string>
     <string name="shipinluzhi_delete_N">保存</string>
+    <string name="shipinluzhi_upload_tips">正在上传,请等待...</string>
+    <string name="shipinluzhi_upload_tips_sucesss">视频上传成功,你可以在[成长记录]中查看。</string>
+    <string name="shipinluzhi_upload_tips_failed">视频上传失败,你可以稍后再试..</string>
     <!--视频选择-->
     <string name="only_one_video_canChoose">只能选择一个视频</string>
 

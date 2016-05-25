@@ -1,37 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <include layout="@layout/framlayout_container"></include>
-
-    <com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/media_list"
-        android:layout_marginTop="?attr/actionBarSize"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/activity_appbar"></include>
+    <FrameLayout
+        android:id="@+id/media_container"
         android:layout_width="match_parent"
-        app:ptrDrawable="@drawable/default_ptr_flip"
-        app:ptrAnimationStyle="flip"
         android:layout_height="match_parent">
-
-    </com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView>
-
-    <LinearLayout
-        android:id="@+id/media_empty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:visibility="gone"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_kongzhuangtai"/>
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="没有视频,快来录制一段视频吧^_^"
-            android:textColor="#999999"/>
-    </LinearLayout>
-</FrameLayout>
+    </FrameLayout>
+</LinearLayout>

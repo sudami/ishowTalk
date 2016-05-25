@@ -153,4 +153,16 @@
         <item name="colorAccent">#ff3a2f</item>
     </style>
 
+    <!--upload-media-popwindow-editext-style -->
+    <style name="upload_media_popwindow_editext_style" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:background">@drawable/upload_media_pop_editext_bg</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:textColor">#999999</item>
+    </style>
 </resources>

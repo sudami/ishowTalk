@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.R;
+import com.example.ishow.UIView.UploadMediaPop;
 import com.example.ishow.Utils.TimeUtil;
 import com.example.ishow.Utils.ToastUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -86,7 +87,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     }
 
 
-    boolean record = true;//是否正在录制
+    boolean record = false;//是否正在录制
     @OnClick({R.id.fragment_media_top_close, R.id.fragment_media_top_switch, R.id.fragment_media_delete, R.id.fragment_media_recorder, R.id.fragment_media_save})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -101,7 +102,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
                 resetFragmentMediaTop();
                 break;
             case R.id.fragment_media_recorder:
-                if (record) {
+                if (!record) {
                     startRecord();
                     record = !record;
                 } else {
@@ -123,6 +124,8 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             return;
         }
 
+        /**显示上传视频必填的信息对话框*/
+      new UploadMediaPop().showMediaPop(getActivity(),fragmentMediaTopTime.getText().toString());
     }
 
 
@@ -134,8 +137,8 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             return;
         }
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle(getString(R.string.shipinluzhi_delete_file));
-        dialog.setPositiveButton(getString(R.string.shipinluzhi_delete_Y), new DialogInterface.OnClickListener() {
+        dialog.setMessage(getString(R.string.shipinluzhi_delete_file));
+        dialog.setNegativeButton(getString(R.string.shipinluzhi_delete_Y), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 File file = new File(videoOutPath);
@@ -150,6 +153,8 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
                 dialog.cancel();
             }
         });
+        dialog.setCancelable(false);
+        dialog.setIcon(R.mipmap.ic_launcher);
         dialog.create();
         dialog.show();
     }
@@ -199,6 +204,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             recorder.start();
             fragmentMediaRecorder.setImageResource(R.drawable.icon_zantingluzhi);
             recordSystemTime = System.currentTimeMillis();
+            setMediaOperation(false);
             handler.postDelayed(runnable, 1000);
         } catch (IOException e) {
             e.printStackTrace();
@@ -214,9 +220,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             long time = System.currentTimeMillis() - recordSystemTime;
             fragmentMediaTopTime.setText(TimeUtil.getMinandSeconds(time));
             fragmentMediaProgressBar.setProgress((int) ((time*1.0f/maxTime)*100));
-            LogUtil.e(time+"fragmentMediaProgressBar");
             handler.postDelayed(runnable, 1000);
-            if (time>=2000) setMediaOperation(true);
         }
     };
 
@@ -300,14 +304,14 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        LogUtil.e(fragmentMediaSurfaceView.getMeasuredWidth()+"*****"+fragmentMediaSurfaceView.getMeasuredHeight());
         startPerview(holder);
     }
 
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        stopRealseCamera();
+        startPerview(holder);
     }
 
     @Override
@@ -327,16 +331,16 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
             camera.stopPreview();//停止预览
             camera.release();      //释放资源
             camera = null;
-            mSurfaceHolder.removeCallback(this);
         }
     }
 
     @Override
     public void onDestroyView() {
         stopRealseCamera();
+        mSurfaceHolder.removeCallback(this);
+        handler.removeCallbacks(runnable);
         mSurfaceHolder = null;
         fragmentMediaSurfaceView =null;
-        handler.removeCallbacks(runnable);
         super.onDestroyView();
         ButterKnife.unbind(this);
     }

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.Fragment.GalleryFragment;
@@ -37,6 +38,9 @@ public class MediaRecordActivity extends AppBaseCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mediarecorder);
+        WindowManager.LayoutParams attributes = getWindow().getAttributes();
+        attributes.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        getWindow().setAttributes(attributes);
         ButterKnife.bind(this);
         fm = getSupportFragmentManager();
         showHideFragment(R.id.media_recorder_shipin);
@@ -73,7 +77,7 @@ public class MediaRecordActivity extends AppBaseCompatActivity {
                     gallery=new GalleryFragment();
                     ft.add(R.id.media_recorder_container,gallery).show(gallery);
 
-                }else ft.show(record);
+                }else ft.show(gallery);
                 break;
         }
         ft.commit();

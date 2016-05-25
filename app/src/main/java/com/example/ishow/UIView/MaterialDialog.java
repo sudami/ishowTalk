@@ -26,7 +26,6 @@ public class MaterialDialog {
     }
 
     public void showDloag(Context context, String tips) {
-
         View v = View.inflate(context, R.layout.progressbar, null);
         dialog = new Dialog(context, R.style.dialog);
         dialog.setContentView(v,new ViewGroup.LayoutParams(PixlesUtils.dip2px(context,160),PixlesUtils.dip2px(context,160)));
@@ -37,8 +36,12 @@ public class MaterialDialog {
         dialog.show();
     }
 
+    public boolean isShow(){
+        return dialog==null?false:dialog.isShowing();
+    }
     public void cancelDialog() {
-        dialog.dismiss();
+      if (dialog!=null)
+          dialog.dismiss();
     }
     public void setCancelable(boolean enable){
         dialog.setCancelable(enable);

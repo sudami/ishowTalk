@@ -9,7 +9,6 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/media_fragment_top_titlebar"
         android:layout_height="45dp">
         <ImageView
             android:id="@+id/fragment_media_top_close"
