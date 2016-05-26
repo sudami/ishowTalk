@@ -67,7 +67,10 @@ public class iShowConfig {
     public static final String uploadVideo=SERVER_URL+"/common/upload_media?code=340e8215bcef19b1ba5dcf0278b532ee";
     //获取个人视频 口测视频 娱乐视频{mediaBelong:15555043402,mediaOffset:0,isTest:0}
     public static final String getPersonVideo =SERVER_URL+"/media/getPersonalList?code=10306e119a3c6d1db17152068b4a5feb&data=";
-
+    //复读机点击某个视频预览页（口测）：{mediaId:3,mediaCommentOffset:0}
+    public static final String getPersonVideoDetail =SERVER_URL+"/media/getPersonalDetail?code=a09471fb952fc7d56f6993e87953d438&data=";
+    //评论某一个视频  mediaId:3,mediaBelong:18983424840,mediaCommentContent:%22%E7%9C%9F %E5%A5%BD%E5%91%80%22,commentUserId%22:666}
+    public static final String commentVideo =SERVER_URL+"/media/addComments?code=c9cf3997265381000c4737850114cd6f&data=";
     //*****************************获取课程信息时附带的课程id*******************************************//
     public static final String COURSEID_BY_PRIMARY = "37";
     public static final String COURSEID_BY_MIDDLE = "38";

@@ -134,6 +134,7 @@
     <string name="shipinluzhi_upload_tips">正在上传,请等待...</string>
     <string name="shipinluzhi_upload_tips_sucesss">视频上传成功,你可以在[成长记录]中查看。</string>
     <string name="shipinluzhi_upload_tips_failed">视频上传失败,你可以稍后再试..</string>
+    <string name="shipinluzhi_upload_tips_failed_net">视频上传失败,网络超时..</string>
     <!--视频选择-->
     <string name="only_one_video_canChoose">只能选择一个视频</string>
 

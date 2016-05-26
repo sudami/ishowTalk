@@ -125,7 +125,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
         }
 
         /**显示上传视频必填的信息对话框*/
-      new UploadMediaPop().showMediaPop(getActivity(),fragmentMediaTopTime.getText().toString());
+      new UploadMediaPop().showMediaPop(getActivity(), String.valueOf(time/1000));
     }
 
 
@@ -188,6 +188,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
                 camera.unlock();
                 recorder.setCamera(camera);
             }
+            recorder.setOrientationHint(90);
             recorder.setPreviewDisplay(mSurfaceHolder.getSurface());
             recorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -213,11 +214,12 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
 
 
     long maxTime  = 5*60*1000;
+    private long time;
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            long time = System.currentTimeMillis() - recordSystemTime;
+            time = System.currentTimeMillis() - recordSystemTime;
             fragmentMediaTopTime.setText(TimeUtil.getMinandSeconds(time));
             fragmentMediaProgressBar.setProgress((int) ((time*1.0f/maxTime)*100));
             handler.postDelayed(runnable, 1000);

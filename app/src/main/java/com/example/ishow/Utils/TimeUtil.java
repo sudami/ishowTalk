@@ -6,6 +6,8 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 
+import org.xutils.common.util.LogUtil;
+
 @SuppressLint("SimpleDateFormat")
 public class TimeUtil {
 	
@@ -35,6 +37,7 @@ public class TimeUtil {
 	 * @return 时间字符串
 	 */
 	public static String getDescriptionTimeFromTimestamp(long timestamp) {
+		LogUtil.e("getDescriptionTimeFromTimestamp"+timestamp);
 		long currentTime = System.currentTimeMillis();
 		long timeGap = (currentTime - timestamp) / 1000;// 与现在时间相差秒数
 		System.out.println("timeGap: " + timeGap);

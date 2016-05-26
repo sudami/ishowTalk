@@ -1,25 +1,34 @@
 package com.example.ishow.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import com.example.ishow.Adapter.MediaAdapter;
+import com.example.ishow.BaseComponent.DividerGridItemDecoration;
+import com.example.ishow.BaseComponent.SpaceItemDecoration;
 import com.example.ishow.Bean.MediaEntry;
 import com.example.ishow.Bean.UserEntry;
 import com.example.ishow.R;
+import com.example.ishow.UIActivity.MediaPlayActivity;
+import com.example.ishow.Utils.PixlesUtils;
 import com.example.ishow.Utils.SharePrefrence;
 import com.example.ishow.Xutils3.XHttpUtils;
 import com.example.ishow.iShowConfig.iShowConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 import com.umeng.analytics.MobclickAgent;
 
@@ -28,7 +37,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.util.LogUtil;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,14 +48,13 @@ import butterknife.ButterKnife;
 /**
  * Created by MRME on 2016-05-10.
  */
-public class VideoShowFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2{
+public class VideoShowFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
     @Bind(R.id.base_loading)
     LinearLayout baseLoading;
     @Bind(R.id.media_list)
-    PullToRefreshRecyclerView mediaList;
+    PullToRefreshGridView mediaList;
     @Bind(R.id.media_empty)
     LinearLayout mediaEmpty;
-    private RecyclerView recyclerView;
     private ArrayList<MediaEntry> list ;
     private MediaAdapter mediaAdapter;
     private Context context;
@@ -56,12 +67,9 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
         rootView = getView(R.layout.fragment_media);
         ButterKnife.bind(this, rootView);
         /**设置refreshRecyclerView的一些属性*/
-        recyclerView = mediaList.getRefreshableView();
-        GridLayoutManager manager = new GridLayoutManager(context,2, GridLayoutManager.VERTICAL, false);
-        manager.setSmoothScrollbarEnabled(true);
-        recyclerView.setLayoutManager(manager);
         mediaList.setMode(PullToRefreshBase.Mode.BOTH);
         mediaList.setOnRefreshListener(this);
+        mediaList.setOnItemClickListener(this);
         return rootView;
     }
 
@@ -114,18 +122,20 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
             {
                 JSONArray msg = object.getJSONArray("msg");
                 Gson gson = new Gson();
-                list = gson.fromJson(msg.toString(),new TypeToken<ArrayList<MediaEntry>>(){}.getType());
+                gson.fromJson(msg.toString(),new TypeToken<List<MediaEntry>>(){}.getType());
+                list.addAll((Collection<? extends MediaEntry>) gson.fromJson(msg.toString(),new TypeToken<ArrayList<MediaEntry>>(){}.getType()));
                 if (mediaAdapter==null)
                 {
                     mediaAdapter =new MediaAdapter(getActivity(),list);
-                    recyclerView.setAdapter(mediaAdapter);
-                }else if (mediaOffset==0) mediaAdapter.refreshData(list);
-                else mediaAdapter.notifyItemRangeInserted(mediaOffset,list.size()-1);
+                    mediaList.setAdapter(mediaAdapter);
+                }else mediaAdapter.notifyDataSetChanged();
             }else {baseLoading.setVisibility(View.GONE); mediaEmpty.setVisibility(View.VISIBLE);}
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public void onResume() {
@@ -155,5 +165,17 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         if (list!=null)mediaOffset = list.size();
         getDataFromServer(context,isTest);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        MediaEntry entry = list.get(position);
+        Intent intent = new Intent(getActivity(), MediaPlayActivity.class);
+        intent.putExtra("mediaTotal",entry.getMediaLength());
+        intent.putExtra("mediaTitle",entry.getMediaTitle());
+        intent.putExtra("videoUrl",entry.getMediaVideoUrlNew());
+        intent.putExtra("imageUrl",entry.getFirstImgUrl());
+        intent.putExtra("videoId",entry.getId());
+        ActivityCompat.startActivity(getActivity(),intent, ActivityOptionsCompat.makeCustomAnimation(getActivity(),R.anim.slide_in_from_bottom,R.anim.slide_out_to_bottom).toBundle());
     }
 }

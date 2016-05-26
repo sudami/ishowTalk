@@ -69,13 +69,6 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
         container = (FrameLayout) contentView.findViewById(R.id.container);
         baseError= (LinearLayout) contentView.findViewById(R.id.base_error);
         tverror = (TextView) contentView.findViewById(R.id.base_error_text);
-
-       // ButterKnife.bind(this);
-
-       // setToolbar(true, "iShow");
-        // StatusBarUtils.setColor(this,R.color.colorAccent);
-        //new SystemBarTintManager(this);
-
     }
 
     public void setStatusBar(int colorId) {
