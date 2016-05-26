@@ -147,7 +147,6 @@ public class TimeUtil {
 		return format.format(new Date(time));
 	}
 	public static String getHourAndMinText(long time) {
-
 		int mins= (int) (time/60);
 		int hours = mins/60;
 		int realMins = mins%60;

@@ -58,7 +58,9 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
     private ArrayList<MediaEntry> list ;
     private MediaAdapter mediaAdapter;
     private Context context;
+    private boolean isPrivate;
     private boolean isTest;
+    private int mediaType;
 
 
     @Nullable
@@ -80,24 +82,33 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
      * @param isTest 是否是口测视频
      */
     private int mediaOffset=0;
-    public void getDataFromServer(Context context,boolean isTest){
+    public void getDataFromServer(Context context,boolean isTest,boolean isPrivate,int mediaType){
         this.context = context;
+        this.isPrivate = isPrivate;
         this.isTest = isTest;
+        this.mediaType = mediaType;
         UserEntry studentInfo = SharePrefrence.getInstance().getStudentInfo(context);
         //{mediaBelong:15555043402,mediaOffset:0,isTest:0}
         JSONObject object = new JSONObject();
         try {
-            object.put("mediaBelong",studentInfo.getMobile());
-            object.put("mediaOffset",mediaOffset);
-            object.put("isTest",isTest?1:0);
-            XHttpUtils.getInstace().getValue(iShowConfig.getPersonVideo, object, new XHttpUtils.OnHttpCallBack() {
+            String url = isPrivate?iShowConfig.getCommentVideoByType:iShowConfig.getPersonVideo;
+           if (!isPrivate)
+           {
+               object.put("mediaBelong",studentInfo.getMobile());
+               object.put("mediaOffset",mediaOffset);
+               object.put("isTest",isTest?1:0);
+           }else
+           {
+               object.put("cmmonMediaType",mediaType);
+           }
+
+            XHttpUtils.getInstace().getValue(url ,object, new XHttpUtils.OnHttpCallBack() {
                 @Override
                 public void onSuccess(String result) {
                     mediaList.onRefreshComplete();
                     setUIbyData(result);
                     LogUtil.e(result);
                 }
-
                 @Override
                 public void onError(String errorResson) {
                     LogUtil.e(errorResson);
@@ -109,7 +120,6 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     private void setUIbyData(String result) {
@@ -158,13 +168,13 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
         mediaOffset =0;
-        getDataFromServer(context,isTest);
+        getDataFromServer(context,isPrivate,isTest,mediaType);
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         if (list!=null)mediaOffset = list.size();
-        getDataFromServer(context,isTest);
+        getDataFromServer(context,isPrivate,isTest,mediaType);
     }
 
     @Override

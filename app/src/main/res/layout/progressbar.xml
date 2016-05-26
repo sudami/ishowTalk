@@ -13,7 +13,7 @@
            android:layout_height="45dp"
            android:layout_marginBottom="12dp"
            xmlns:myapp="http://schemas.android.com/apk/res/com.example.ishow"
-           myapp:barcolor="@color/colorAccent"
+           myapp:barcolor="@color/colorPrimary"
 
            >
        </com.example.ishow.UIView.MaterialProgressBar>
@@ -23,7 +23,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:gravity="center"
-           android:textColor="@color/colorAccent"
+           android:textColor="@color/colorPrimary"
            android:layout_marginTop="8dp"
            android:text="111"
            />

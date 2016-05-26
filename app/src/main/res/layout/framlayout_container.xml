@@ -40,6 +40,7 @@
                 android:layout_gravity="right"
                 android:src="@drawable/icon_shangchuanluzhi"
                 android:layout_marginRight="10dp"
+                android:visibility="gone"
                 />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>

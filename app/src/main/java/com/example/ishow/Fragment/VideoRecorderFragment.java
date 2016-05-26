@@ -65,7 +65,12 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
         rootView = getView(R.layout.fragment_mediarecorder);
         ButterKnife.bind(this, rootView);
 
-        setData2UI();
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               setData2UI();
+           }
+       }).start();
         return rootView;
 
     }
@@ -107,6 +112,8 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
                     record = !record;
                 } else {
                     stopRecord();
+                    //手动停止录制 要弹出框提示上传
+                    fragmentMediaUpload();
                     record = !record;
                 }
                 break;
@@ -176,6 +183,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
         fragmentMediaSave.setAlpha(1.0f);
         fragmentMediaRecorder.setImageResource(R.drawable.icon_kaishiluzhi);
 
+
     }
 
     long recordSystemTime = 0;
@@ -227,9 +235,9 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
     };
 
     private void setMediaOperation(boolean b) {
-        fragmentMediaDelete.setEnabled(b);
+        fragmentMediaDelete.setClickable(b);
         fragmentMediaDelete.setAlpha(b?1f:0.5f);
-        fragmentMediaSave.setEnabled(b);
+        fragmentMediaSave.setClickable(b);
         fragmentMediaSave.setAlpha(b?1f:0.5f);
     }
 

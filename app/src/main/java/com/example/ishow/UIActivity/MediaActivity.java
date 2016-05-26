@@ -41,7 +41,7 @@ public class MediaActivity extends AppBaseCompatActivity {
     ImageView toolbarSearch;
     @Bind(R.id.Toolbar)
     android.support.v7.widget.Toolbar Toolbar;
-    @Bind(R.id.VideoRadioGroup)
+    @Bind(R.id.RadioGroup)
     RadioGroup VideoRadioGroup;
     private View rootView;
     VideoShowFragment kouce;
@@ -73,7 +73,7 @@ public class MediaActivity extends AppBaseCompatActivity {
                 if (kouce == null) {
                     kouce = new VideoShowFragment();
                     ft.add(R.id.media_container, kouce).show(kouce);
-                    kouce.getDataFromServer(this,true);
+                    kouce.getDataFromServer(this,true,false,0);
                 } else ft.show(kouce);
 
                 break;
@@ -81,7 +81,7 @@ public class MediaActivity extends AppBaseCompatActivity {
                 if (yule == null) {
                     yule = new VideoShowFragment();
                     ft.add(R.id.media_container, yule).show(yule);
-                    yule.getDataFromServer(this,false);
+                    yule.getDataFromServer(this,false,false,0);
                 } else ft.show(yule);
                 break;
         }

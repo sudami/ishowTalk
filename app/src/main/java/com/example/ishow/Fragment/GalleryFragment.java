@@ -32,6 +32,7 @@ import com.example.ishow.Adapter.VideoParentAdapter;
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.Bean.VideoEntry;
 import com.example.ishow.R;
+import com.example.ishow.UIView.UploadMediaPop;
 import com.example.ishow.Utils.PixlesUtils;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
@@ -282,6 +283,7 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
                 loadVideosDirs();
                 break;
             case R.id.fragment_gallery_top_upload:
+                new UploadMediaPop().showMediaPop(getActivity(), String.valueOf(duration/1000));
                 break;
         }
     }
@@ -348,8 +350,12 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
         fragmentGalleryTopJiantou.startAnimation(animation);
     }
 
+
+    long duration=0;
     @Override
-    public void onBoxChecked(boolean checked, int position) {
+    public void onBoxChecked(boolean checked, int position,long duration) {
+        this.duration = duration;
+        LogUtil.e("onBoxChecked"+duration);
         fragmentGalleryTopUpload.setEnabled(checked);
         fragmentGalleryTopUpload.setAlpha(checked?1.0f:0.5f);
     }

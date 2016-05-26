@@ -39,7 +39,7 @@ public class MediaComAdapter extends BasicAdapter<MediaComment.MsgBean.CommentsB
             imageView.setImageResource(R.mipmap.ic_launcher_moren);
         else x.image().bind(imageView,CommentsBean.getUserImg(), iShowTalkApplication.getInstance().getIgetImageOptions(context,20,5));
         name.setText(CommentsBean.getUserNick());
-        time.setText(TimeUtil.getDescriptionTimeFromTimestamp(Long.parseLong(CommentsBean.getCommentTime())/1000));
+        time.setText(TimeUtil.getChatTime(Long.parseLong(CommentsBean.getCommentTime())));
         pinglun.setText(CommentsBean.getMediaComment());
         if (position==0){
             pinglunCount.setText(getCount()+"条评论");

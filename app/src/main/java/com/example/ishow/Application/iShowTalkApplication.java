@@ -27,6 +27,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.umeng.socialize.PlatformConfig;
 import com.xiaomi.channel.commonutils.logger.LoggerInterface;
 import com.xiaomi.mipush.sdk.Logger;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -82,24 +83,19 @@ public class iShowTalkApplication extends Application {
         MtcUtil.Mtc_AnyLogInfoStr("Cloud sample", "mtcVer" + mtcVer);
         MtcUtil.Mtc_AnyLogInfoStr("Cloud sample", "zmfVer" + zmfVer);
         MiPushClient.registerPush(getApplicationContext(), getString(R.string.MiPush_AppId), getString(R.string.MiPush_AppKey));
-        LoggerInterface newLogger = new LoggerInterface() {
-            @Override
-            public void setTag(String tag) {
-                // ignore
-            }
-            @Override
-            public void log(String content, Throwable t) {
-                Log.d("LoggerInterface", content, t);
-            }
-            @Override
-            public void log(String content) {
-                Log.d("LoggerInterface", content);
-            }
-        };
-        Logger.setLogger(this, newLogger);
+
         MiPushClient.checkManifest(this);
-//        EMClient.getInstance().chatManager().loadAllConversations();
- //      LogUtil.e("EMClient.getInstance().chatManager()");
+
+        //APP ID1104835856APP KEY0nWtiAHjzi7nwajV  Qq
+        //AppID：wxbcee176067fc70ed AppSecret：2d3646387a00b620e7dcc0aa4ceab881  WEIIXIN
+        //App key：4245668879App secret：632564f60dc55d7b94430c6a3711a88f  XINLANG
+
+        PlatformConfig.setWeixin("wxbcee176067fc70ed", "2d3646387a00b620e7dcc0aa4ceab881");
+        //微信 appid appsecret
+        PlatformConfig.setSinaWeibo("3921700954","04b48b094faeb16683c32669824ebdad");
+        //新浪微博 appkey appsecret
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        // QQ和Qzone appid appkey
     }
 
 

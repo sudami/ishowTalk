@@ -146,8 +146,8 @@ public class ExtendViewFlow extends  ViewFlow {
               {
                   if (list.size()>0)
                       holder.image.setImageBitmap(StorageUtils.getInstance().getBannerBitmap(list.get( position % list.size()).getTitle()));
-                     else holder.image.setImageResource(R.mipmap.banner);
-              }else   holder.image.setImageResource(R.mipmap.banner);
+                    // else holder.image.setImageResource(R.mipmap.banner);
+              }//else   holder.image.setImageResource(R.mipmap.banner);
                //ImageLoader.getInstance().displayImage(list.get( position % list.size()).getTitle(),holder.image);
            }
           if (list!=null){

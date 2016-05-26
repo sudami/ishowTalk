@@ -69,6 +69,22 @@
                       android:layout_weight="1"/>
               </RelativeLayout>
 
+              <RelativeLayout
+                  android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:layout_height="match_parent">
+                  <RadioButton
+                      android:id="@+id/main_radiobutton_xiufenxiang"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerInParent="true"
+                      android:drawableTop="@drawable/icon_xiufenxiang_selector"
+                      android:text="秀分享"
+                      android:minWidth="50dp"
+                      style="@style/RadioButton_Style"
+                      android:layout_weight="1"/>
+              </RelativeLayout>
+
 
               <RelativeLayout
                   android:layout_width="0dp"
@@ -89,16 +105,16 @@
                       android:id="@+id/msg_unread_count"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:minHeight="16dp"
-                      android:minWidth="16dp"
+                      android:minHeight="14dp"
+                      android:minWidth="14dp"
                       android:background="@drawable/msg_red_tips"
                       android:textColor="@android:color/white"
                       android:textSize="10sp"
                       android:gravity="center"
                       android:text="9"
                       android:layout_alignTop="@+id/main_radiobutton_msg"
-                      android:layout_toRightOf="@+id/main_radiobutton_msg"
-                      android:layout_toEndOf="@+id/main_radiobutton_msg" />
+                      android:layout_alignRight="@+id/main_radiobutton_msg"
+                      android:layout_alignEnd="@+id/main_radiobutton_msg" />
               </RelativeLayout>
               <RelativeLayout
                   android:layout_width="0dp"

@@ -21,6 +21,7 @@ import com.example.ishow.Application.iShowTalkApplication;
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
 import com.example.ishow.Bean.MsgEntry;
 import com.example.ishow.Bean.UserEntry;
+import com.example.ishow.Fragment.ComMediaShowFragment;
 import com.example.ishow.Fragment.FragmentCourse;
 import com.example.ishow.Fragment.FragmentMe;
 import com.example.ishow.Fragment.FragmentMsgList;
@@ -56,6 +57,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
     FragmentPractice fragmentPractice;
     FragmentMsgList fragmentMsgList;
     FragmentMe fragmentMe;
+    ComMediaShowFragment showFragment;
     //  @Bind(R.id.main_radiobutton_course)
     RadioButton mainRadiobuttonCourse;
     // @Bind(R.id.main_radiobutton_practice)
@@ -78,6 +80,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
     private ChatManager dbManager;
     private JustalkStateCheckReciver stateCheckReciver;
     private BroadcastReceiver ExitAppReciver;
+    private RadioButton mainRadiobuttonfenxaing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
         mainRadiobuttonPractice = (RadioButton) contentView.findViewById(R.id.main_radiobutton_practice);
         mainRadiobuttonMsg = (RadioButton) contentView.findViewById(R.id.main_radiobutton_msg);
         mainRadiobuttonMe = (RadioButton) contentView.findViewById(R.id.main_radiobutton_me);
+        mainRadiobuttonfenxaing = (RadioButton) contentView.findViewById(R.id.main_radiobutton_xiufenxiang);
         radioGroup = (RadioGroup) contentView.findViewById(R.id.radioGroup);
 
         toolbarSearch = (ImageView) contentView.findViewById(R.id.toolbar_search);
@@ -126,6 +130,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
         mainRadiobuttonPractice.setChecked(false);
         mainRadiobuttonMsg.setChecked(false);
         mainRadiobuttonMe.setChecked(false);
+        mainRadiobuttonfenxaing.setChecked(false);
         ft = getSupportFragmentManager().beginTransaction();
         hideFragment();
         switch (i) {
@@ -159,6 +164,13 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
                 } else ft.show(fragmentMe);
                 toolbarSearch.setVisibility(View.GONE);
                 break;
+            case R.id.main_radiobutton_xiufenxiang:
+                if (showFragment == null) {
+                    showFragment = new ComMediaShowFragment();
+                    ft.add(R.id.main_viewPager, showFragment).show(showFragment);
+                } else ft.show(showFragment);
+                toolbarSearch.setVisibility(View.GONE);
+                break;
         }
         ft.commit();
     }
@@ -172,6 +184,8 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
             ft.hide(fragmentMsgList);
         if (fragmentMe != null)
             ft.hide(fragmentMe);
+        if (showFragment != null)
+            ft.hide(showFragment);
     }
 
     public void login() {
@@ -364,7 +378,7 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
         }
     }
 
-    @OnClick({R.id.main_radiobutton_course, R.id.main_radiobutton_practice, R.id.main_radiobutton_msg, R.id.main_radiobutton_me, R.id.toolbar_search})
+    @OnClick({R.id.main_radiobutton_course, R.id.main_radiobutton_practice, R.id.main_radiobutton_msg, R.id.main_radiobutton_me,R.id.main_radiobutton_xiufenxiang ,R.id.toolbar_search})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_radiobutton_course:
@@ -382,6 +396,10 @@ public class MainActivity extends AppBaseCompatActivity implements JustalkStateC
             case R.id.main_radiobutton_me:
                 showHideFragment(R.id.main_radiobutton_me);
                 mainRadiobuttonMe.setChecked(true);
+                break;
+            case R.id.main_radiobutton_xiufenxiang:
+                showHideFragment(R.id.main_radiobutton_xiufenxiang);
+                mainRadiobuttonfenxaing.setChecked(true);
                 break;
             case R.id.toolbar_search:
                 Intent intent = new Intent(this, SearchActivity.class);

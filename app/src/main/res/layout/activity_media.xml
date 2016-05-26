@@ -4,6 +4,68 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/activity_appbar"></include>
+
+    <RadioGroup
+        android:id="@+id/RadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:visibility="gone"
+        android:background="@drawable/newright_title_3text"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/Video_suggestion"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:minWidth="85dp"
+            android:gravity="center"
+            android:text="口测视频"
+            android:background="@drawable/select_members_left"
+            android:button="@null"
+            android:checked="true"
+            android:textColor="@color/select_members_textcolor"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="10px"
+            android:background="@color/colorPrimary"/>
+        <RadioButton
+            android:id="@+id/Video_new"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:background="@drawable/select_members_middle"
+            android:text="最新视频"
+            android:minWidth="85dp"
+            android:button="@null"
+
+            android:textColor="@color/select_members_textcolor"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:padding="1px"
+            android:background="@color/colorPrimary"/>
+
+        <RadioButton
+            android:id="@+id/Video_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="热门视频"
+            android:minWidth="85dp"
+            android:background="@drawable/select_members_right"
+            android:button="@null"
+            android:textColor="@color/select_members_textcolor"
+            android:textSize="14sp" />
+    </RadioGroup>
+
     <FrameLayout
         android:id="@+id/media_container"
         android:layout_width="match_parent"

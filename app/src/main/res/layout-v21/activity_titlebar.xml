@@ -10,7 +10,7 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title=""
     >
-    <include layout="@layout/activity_appbar_radiogroup"></include>
+   <!-- <include layout="@layout/activity_appbar_radiogroup"></include>-->
     <!-- app:layout_scrollFlags="scroll|enterAlways"-->
     <TextView
         android:id="@+id/course_title_name"

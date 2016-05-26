@@ -13,8 +13,9 @@
         <ImageView
             android:id="@+id/fragment_media_top_close"
             android:layout_width="wrap_content"
+            android:minWidth="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
             android:src="@drawable/icon_guanbi"/>
 

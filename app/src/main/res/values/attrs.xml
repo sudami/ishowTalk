@@ -83,4 +83,11 @@
         <attr name="headerHeight" format="dimension" />
         <attr name="headerVisibleHeight" format="dimension" />
     </declare-styleable>
+
+    <!--MediaRecorderBottomTextView-->
+    <declare-styleable name="BottomTextView">
+        <attr name="bottomlinecolor" format="color" />
+        <attr name="bottomlinecolor_clear" format="color" />
+        <attr name="bottomlinecolor_lineHeight" format="dimension" />
+    </declare-styleable>
 </resources>

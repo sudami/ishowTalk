@@ -146,7 +146,7 @@ public class SettingActivity extends AppBaseCompatActivity {
     private void FileDelete() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
-        builder.setTitle(getString(R.string.files_delete_yes_no));
+        builder.setMessage(getString(R.string.files_delete_yes_no));
         builder.setPositiveButton(getString(R.string.files_delete_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

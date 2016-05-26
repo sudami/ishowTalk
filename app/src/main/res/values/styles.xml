@@ -152,7 +152,19 @@
     <style name="mediaRecorderActivity_style" parent="AppTheme">
         <item name="colorAccent">#ff3a2f</item>
     </style>
+    <style name="mediaPlayActivity_style." parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
 
+    <style name="mediaRecordeActivity_style_green" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
     <!--upload-media-popwindow-editext-style -->
     <style name="upload_media_popwindow_editext_style" parent="Widget.AppCompat.EditText">
         <item name="android:textSize">10sp</item>

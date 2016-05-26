@@ -87,8 +87,7 @@ public class CircleProgressBar extends View {
 
 
 
-         mTypedArray = context.obtainStyledAttributes(attrs,
-                R.styleable.RoundProgressBar);
+         mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
 
         //获取自定义属性和默认值
         roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundColor, Color.RED);

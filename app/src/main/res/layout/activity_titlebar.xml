@@ -10,7 +10,7 @@
     app:title="" >
     <!--app:layout_scrollFlags="scroll|enterAlways"-->
 
-  <include layout="@layout/activity_appbar_radiogroup"></include>
+ <!-- <include layout="@layout/activity_appbar_radiogroup"></include>-->
     <TextView
         android:id="@+id/course_title_name"
         style="@style/text_title_style"

@@ -71,6 +71,9 @@ public class iShowConfig {
     public static final String getPersonVideoDetail =SERVER_URL+"/media/getPersonalDetail?code=a09471fb952fc7d56f6993e87953d438&data=";
     //评论某一个视频  mediaId:3,mediaBelong:18983424840,mediaCommentContent:%22%E7%9C%9F %E5%A5%BD%E5%91%80%22,commentUserId%22:666}
     public static final String commentVideo =SERVER_URL+"/media/addComments?code=c9cf3997265381000c4737850114cd6f&data=";
+
+    //获取公共视频的 1  2 3 最新  热门 推荐 视频cmmonMediaType:1
+    public static final String getCommentVideoByType =SERVER_URL+"/media/getPublicResource?code=fb7ca9f3dc37a2272d33da5ce6e20e92&data=";
     //*****************************获取课程信息时附带的课程id*******************************************//
     public static final String COURSEID_BY_PRIMARY = "37";
     public static final String COURSEID_BY_MIDDLE = "38";
