@@ -73,7 +73,7 @@ public class MediaActivity extends AppBaseCompatActivity {
                 if (kouce == null) {
                     kouce = new VideoShowFragment();
                     ft.add(R.id.media_container, kouce).show(kouce);
-                    kouce.getDataFromServer(this,true,false,0);
+                    kouce.getDataFromServer(this,1,1,0);
                 } else ft.show(kouce);
 
                 break;
@@ -81,7 +81,7 @@ public class MediaActivity extends AppBaseCompatActivity {
                 if (yule == null) {
                     yule = new VideoShowFragment();
                     ft.add(R.id.media_container, yule).show(yule);
-                    yule.getDataFromServer(this,false,false,0);
+                    yule.getDataFromServer(this,0,1,0);
                 } else ft.show(yule);
                 break;
         }

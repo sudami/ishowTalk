@@ -18,9 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -71,6 +69,7 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
     GalleryAdapter galleryAdapter = null;
     @Bind(R.id.fragment_gallery_top_layout)
     RelativeLayout fragmentGalleryTopLayout;
+    private String filePath;
 
     @Nullable
     @Override
@@ -152,7 +151,7 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
             @Override
             public void run() {
                 ContentResolver resolver = context.getContentResolver();
-                Cursor query = resolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, mediaColumns,  MediaStore.Video.Media.SIZE+"<?", new String[]{100*1024*1024+""}, MediaStore.Video.VideoColumns.DATE_TAKEN);
+                Cursor query = resolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, mediaColumns,  MediaStore.Video.Media.SIZE+"<?", new String[]{50*1024*1024+""}, MediaStore.Video.VideoColumns.DATE_TAKEN);
                 if (query.getCount() > 0)
                     if (datas == null) datas = new ArrayList<>();
                     else datas.clear();
@@ -167,17 +166,14 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
                     if (!buckets.contains(bucketName))
                         buckets.add(bucketName);
                     else continue;
-                    File file = new File(filePath.substring(0, filePath.lastIndexOf("/")));
+                     File file = new File(filePath.substring(0, filePath.lastIndexOf("/")));
                     File[] files = null;
                     if (file.exists()) {
                         files = file.listFiles(new FileFilter() {
                             @Override
                             public boolean accept(File pathname) {
-                                if (pathname.getName().endsWith(".mp4")
-                                        ||pathname.getName().endsWith(".3gp")
-                                        ||pathname.getName().endsWith(".avi")
-                                        ||pathname.getName().endsWith(".m3u8")
-                                        ||pathname.getName().endsWith(".wav"))
+                                LogUtil.e(pathname.length()+"*****"+50*1024*1024+"listFiles");
+                                if (pathname.getName().endsWith(".mp4")&&pathname.length()<50*1024*1024)
                                     return true;
                                 return false;
                             }
@@ -283,7 +279,7 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
                 loadVideosDirs();
                 break;
             case R.id.fragment_gallery_top_upload:
-                new UploadMediaPop().showMediaPop(getActivity(), String.valueOf(duration/1000));
+                new UploadMediaPop().showMediaPop(getActivity(),filePath, String.valueOf(duration/1000), false);
                 break;
         }
     }
@@ -353,8 +349,9 @@ public class GalleryFragment extends BaseFragment implements AdapterView.OnItemC
 
     long duration=0;
     @Override
-    public void onBoxChecked(boolean checked, int position,long duration) {
-        this.duration = duration;
+    public void onBoxChecked(boolean checked, int position,VideoEntry entry) {
+        this.duration = entry.getDuration();
+        this.filePath = entry.getFilePath();
         LogUtil.e("onBoxChecked"+duration);
         fragmentGalleryTopUpload.setEnabled(checked);
         fragmentGalleryTopUpload.setAlpha(checked?1.0f:0.5f);

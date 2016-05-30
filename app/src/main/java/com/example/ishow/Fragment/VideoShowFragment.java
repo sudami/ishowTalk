@@ -58,8 +58,8 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
     private ArrayList<MediaEntry> list ;
     private MediaAdapter mediaAdapter;
     private Context context;
-    private boolean isPrivate;
-    private boolean isTest;
+    private int isPrivate;
+    private int isTest;
     private int mediaType;
 
 
@@ -78,11 +78,11 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
 
 
     /***
-     *  true 口册视频 ---1   false娱乐视频 -----0
+     *  isPrivate ==1  私人  isTest =0  口测  1  娱乐
      * @param isTest 是否是口测视频
      */
     private int mediaOffset=0;
-    public void getDataFromServer(Context context,boolean isTest,boolean isPrivate,int mediaType){
+    public void getDataFromServer(Context context,int isTest,int isPrivate,int mediaType){
         this.context = context;
         this.isPrivate = isPrivate;
         this.isTest = isTest;
@@ -91,12 +91,12 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
         //{mediaBelong:15555043402,mediaOffset:0,isTest:0}
         JSONObject object = new JSONObject();
         try {
-            String url = isPrivate?iShowConfig.getCommentVideoByType:iShowConfig.getPersonVideo;
-           if (!isPrivate)
+            String url = (isPrivate==0?iShowConfig.getCommentVideoByType:iShowConfig.getPersonVideo);
+           if (isPrivate==1)
            {
                object.put("mediaBelong",studentInfo.getMobile());
                object.put("mediaOffset",mediaOffset);
-               object.put("isTest",isTest?1:0);
+               object.put("isTest",isTest==1?1:0);
            }else
            {
                object.put("cmmonMediaType",mediaType);
@@ -145,8 +145,6 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
         }
     }
 
-
-
     @Override
     public void onResume() {
         MobclickAgent.onPageStart("首页_视频展示_resume");
@@ -185,6 +183,7 @@ public class VideoShowFragment extends BaseFragment implements PullToRefreshBase
         intent.putExtra("mediaTitle",entry.getMediaTitle());
         intent.putExtra("videoUrl",entry.getMediaVideoUrlNew());
         intent.putExtra("imageUrl",entry.getFirstImgUrl());
+        intent.putExtra("mp4Url",entry.getMediaVideoUrl());
         intent.putExtra("videoId",entry.getId());
         ActivityCompat.startActivity(getActivity(),intent, ActivityOptionsCompat.makeCustomAnimation(getActivity(),R.anim.slide_in_from_bottom,R.anim.slide_out_to_bottom).toBundle());
     }

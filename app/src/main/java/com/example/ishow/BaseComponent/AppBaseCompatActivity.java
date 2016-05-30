@@ -159,13 +159,8 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
      * @param permission
      */
     public void checkPermissonForStrorage(RequestPermissionInterface permission) {
-        if(!isAndroidLoppin()){
-            permissionInterface.onPermissionRequestResult(true,false);
-            return;
-        }
-        if (permission != null) {
-            permissionInterface = permission;
-        }
+        if (setPermissonInterface(permission)) return;
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE) != PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{
@@ -176,14 +171,21 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
             permissionInterface.onPermissionRequestResult(true,false);
         }
     }
-    public void checkPermissonForRecord(RequestPermissionInterface permission) {
-        if(!isAndroidLoppin()){
-            permissionInterface.onPermissionRequestResult(true,false);
-            return;
-        }
+
+    private boolean setPermissonInterface(RequestPermissionInterface permission) {
         if (permission != null) {
             permissionInterface = permission;
         }
+        if(!isAndroidLoppin()){
+            permissionInterface.onPermissionRequestResult(true,false);
+            return true;
+        }
+        return false;
+    }
+
+    public void checkPermissonForRecord(RequestPermissionInterface permission) {
+        if (setPermissonInterface(permission)) return;
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) !=PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.RECORD_AUDIO},
@@ -196,13 +198,8 @@ public class AppBaseCompatActivity extends AppCompatActivity implements View.OnC
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void checkPermissonForCamera(RequestPermissionInterface permission){
-        if(!isAndroidLoppin()){
-            permissionInterface.onPermissionRequestResult(true,false);
-            return;
-        }
-        if (permission != null) {
-            permissionInterface = permission;
-        }
+        if (setPermissonInterface(permission)) return;
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.CAMERA) != PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission_group.CAMERA,},

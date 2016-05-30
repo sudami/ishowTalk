@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ishow.Bean.MediaEntry;
 import com.example.ishow.Bean.VideoEntry;
 import com.example.ishow.R;
 import com.example.ishow.Utils.StorageUtils;
@@ -50,7 +51,7 @@ public class GalleryAdapter extends BasicAdapter<VideoEntry> {
                     if (checked) {
                         ((CheckBox) v).setChecked(!checked);
                         checkList.put(position,!checked);
-                        i.onBoxChecked(false,position,entry.getDuration());
+                        i.onBoxChecked(false,position,entry);
                     }
                     else{
                         ((CheckBox)v).setChecked(false);
@@ -60,7 +61,7 @@ public class GalleryAdapter extends BasicAdapter<VideoEntry> {
                 }else
                 {
                     ((CheckBox) v).setChecked(!checked);
-                    i.onBoxChecked(true,position,entry.getDuration());
+                    i.onBoxChecked(true,position,entry);
                     checkList.put(position,!checked);
                 }
             }
@@ -81,7 +82,7 @@ public class GalleryAdapter extends BasicAdapter<VideoEntry> {
 
     public onCheckBoxChecked i;
     public interface onCheckBoxChecked{
-        public void onBoxChecked(boolean checked,int position,long druation);
+        public void onBoxChecked(boolean checked, int position, VideoEntry entry);
     }
     public void addOnCheckBoxCheckedInterface(onCheckBoxChecked checked){
         this.i = checked;
