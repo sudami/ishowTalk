@@ -79,7 +79,10 @@ public class UpdaterManager {
                     showNoticeDialog();
                     break;
                 case 4:
-                    if(dialog!=null){dialog.cancelDialog();}
+                    if(dialog!=null){
+                        ToastUtil.showToast(mContext,"当前已是最新版本");
+                        dialog.cancelDialog();
+                    }
                     break;
 
                 default:

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.ishow.R;
 import com.example.ishow.UIActivity.CourseActivity;
+import com.example.ishow.UIActivity.TeacherActivity;
 import com.example.ishow.iShowConfig.iShowConfig;
 
 public class NoScrollGridView extends GridView implements AdapterView.OnItemClickListener {
@@ -116,6 +117,7 @@ public class NoScrollGridView extends GridView implements AdapterView.OnItemClic
             case 7:
                 intent.putExtra("courseName",getResources().getString(R.string.course_name_teacher));
                 intent.putExtra("courseId", iShowConfig.COURSEID_BY_TRANNING);
+                intent.setClass(context,TeacherActivity.class);
                 break;
             case 8:
                 intent.putExtra("courseName",getResources().getString(R.string.course_name_other));

@@ -13,9 +13,9 @@ import com.example.ishow.R;
 public class ToastUtil {
     static Toast toast =null;
     public static void showToast(Context c, String s) {
-        if (toast==null)toast = Toast.makeText(c,"",Toast.LENGTH_SHORT);
-        else toast.cancel();
-        toast.setText(s);
+        if (toast!=null)
+              toast.cancel();
+        toast = Toast.makeText(c,s,Toast.LENGTH_SHORT);
         toast.show();
     }
 

@@ -54,7 +54,6 @@ public class MediaRecorderBottomTextView extends TextView {
         color = ta.getColor(R.styleable.BottomTextView_bottomlinecolor, 0);
         clearColor = ta.getColor(R.styleable.BottomTextView_bottomlinecolor_clear, 0);
         lineHeight = ta.getDimension(R.styleable.BottomTextView_bottomlinecolor_lineHeight, 1);
-        LogUtil.e(color+"----"+clearColor);
         if (color==0)color = Color.parseColor("#ff3a2f");
         if (clearColor==0)clearColor = Color.parseColor("#2b2d32");
         ta.recycle();
@@ -74,7 +73,7 @@ public class MediaRecorderBottomTextView extends TextView {
            paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
            paint.setColor(color);
-           paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+          // paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
            paint.setStrokeWidth(PixlesUtils.dip2px(context,lineHeight));
            canvas.drawRect(PixlesUtils.dip2px(context,10),getMeasuredHeight()-PixlesUtils.dip2px(context,3),getMeasuredWidth()-PixlesUtils.dip2px(context,10),getMeasuredHeight()-PixlesUtils.dip2px(context,3),paint);
        }
@@ -84,7 +83,6 @@ public class MediaRecorderBottomTextView extends TextView {
            {
                paint.setColor(clearColor);
                paint.setStyle(Paint.Style.FILL);
-               //paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
                canvas.drawPaint(paint);
            }
        }

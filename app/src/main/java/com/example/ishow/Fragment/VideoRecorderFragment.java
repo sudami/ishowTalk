@@ -177,7 +177,7 @@ public class VideoRecorderFragment extends BaseFragment implements SurfaceHolder
            recorder.reset();
            recorder.release();
            recorder = null;
-           getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_STARTED, Uri.fromFile(new File(videoOutPath))));
+           getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(videoOutPath))));
        }
         handler.removeCallbacks(runnable);
         fragmentMediaDelete.setClickable(true);

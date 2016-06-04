@@ -6,14 +6,18 @@ package com.example.ishow.iShowConfig;
 public class iShowConfig {
 
     //测试服务器地址
-    public static final String SERVER_URL = "http://120.26.219.135:8080";
+    //public static final String SERVER_URL = "http://120.26.219.135:8080";
 
     //正式服务器地址
-   // public static final String SERVER_URL = "http://fuduji.ishowedu.com";
+    public static final String SERVER_URL = "http://fuduji.ishowedu.com";
     //首页获取轮播图地址 参数要传 用户手机号
     public static final String getBanner = SERVER_URL + "/common/getBannernVideo?code=3add718fff59a6ca93e57202fa45111d&data=";
     //获取初级 高级 中级 等课程列表信息
     public static final String getCourseById = SERVER_URL + "/course/getTraining?code=947a79810479c2ca46fb42ed37ec44a0&data=";
+    //获取老师课程
+    public static final String getTeacherCourse = SERVER_URL+"/course/teacher_training?code=d8df7ebba36aae8f8eea0840decea1e5&data=";
+    //获取老师课程详情
+    public static final String getTeacherCourseDetail = SERVER_URL+"/course/teacher_list?code=ae60cee23f6ec5503a3e86f23bb56e26&data=";
     //根据课程id去拿每个课程对应的所有短音频地址
     public static final String getAllMusicPathById = SERVER_URL + "/course/getContent?code=eb1b80de3f7b964e3ac0b7cecbb958e1&data=";
     //登陆
@@ -100,4 +104,5 @@ public class iShowConfig {
     public static boolean chatISOpen =false;//是否正处于聊天界面
     public static String morentouxiang ="http://7xlm33.com1.z0.glb.clouddn.com/fuduji_morentouxiang.jpg";
 
+    public static boolean course_is_downloading;
 }

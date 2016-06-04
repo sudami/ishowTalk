@@ -14,7 +14,7 @@ android {
         applicationId "com.example.ishow"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 46
+        versionCode 30
         versionName "4.0"
     }
     task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
@@ -31,7 +31,7 @@ android {
     aaptOptions.useNewCruncher = false
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             shrinkResources true
         }
@@ -62,6 +62,6 @@ dependencies {
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile files('libs/Xutils.jar')
-    compile files('libs/open_sdk_r5509.jar')
-    compile files('libs/SocialSDK_Sina.jar')
+
+
 }

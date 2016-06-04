@@ -77,7 +77,7 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
         setContentView(R.layout.activity_psersonal_info);
         ButterKnife.bind(this);
         bindView2UI();
-        subitPersonInfoAvart();
+       // subitPersonInfoAvart();
     }
 
     private void bindView2UI() {
@@ -165,21 +165,14 @@ public class PersonalInfoActivity extends AppBaseCompatActivity implements View.
         dialog =new MaterialDialog();
         dialog.showDloag(this,getString(R.string.request_server));
         //ShowConfig.commitePersonAvart
-        RequestParams params =new RequestParams(iShowConfig.uploadVideo);
+        RequestParams params =new RequestParams(iShowConfig.commitePersonAvart);
 
        // Environment.getExternalStorageDirectory().getPath()+"/DCIM/111.mp4";
-        File file =new File( Environment.getExternalStorageDirectory().getPath()+"/DCIM/111.mp4");
-        LogUtil.e(file.getPath());
+        File file =new File(sdPath);
         if (file.exists()) {
             params.setMultipart(true);
             params.setAutoResume(true);
             params.addBodyParameter("filename",file);
-            params.addBodyParameter("mediaTitle","2016-05-23");
-            params.addBodyParameter("mediaDescription","2016-05-23-描述");
-            params.addBodyParameter("mediaBelong","15555043403");
-            params.addBodyParameter("meidaIsTest","true");
-            params.addBodyParameter("mediaTeacherPhone","15555043403");
-            params.addBodyParameter("mediaTime","1000");
             x.http().post(params, new Callback.CommonCallback<String>() {
                 @Override
                 public void onSuccess(String s) {

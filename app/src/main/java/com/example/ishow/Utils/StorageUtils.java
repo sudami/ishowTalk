@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 
 import com.example.ishow.BaseComponent.AppBaseCompatActivity;
@@ -138,9 +139,17 @@ public class StorageUtils {
      * @param bitmap
      */
     public String saveBtimap2SD(String parentPath, String picName, Context context, Bitmap bitmap) {
-        File f = new File(parentPath, picName + ".png");
-        try {
 
+        File f = new File(parentPath, picName + ".png");
+        if (TextUtils.equals("avart",picName))
+        {
+            fileOutPut(bitmap, f);
+        }else if (!f.exists())  fileOutPut(bitmap, f);
+        return f.exists()?f.getPath():null;
+    }
+
+    private void fileOutPut(Bitmap bitmap, File f) {
+        try {
             if (!f.exists())
                 f.createNewFile();
             FileOutputStream out = new FileOutputStream(f);
@@ -153,7 +162,6 @@ public class StorageUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return f.exists()?f.getPath():null;
     }
 
 

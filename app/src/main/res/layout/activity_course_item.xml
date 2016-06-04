@@ -6,12 +6,14 @@
     android:clickable="true"
     android:id="@+id/cardview"
     app:cardCornerRadius="5dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     app:cardElevation="10dp">
 
     <RelativeLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,8 +40,8 @@
 
         <com.example.ishow.UIView.CircleProgressBar
             android:id="@+id/CircleProgressBar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginRight="@dimen/course_activity_item_padding"
@@ -54,12 +56,13 @@
 
         <ImageButton
             android:id="@+id/course_item_down_state"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/course_activity_item_padding"
+
+            android:layout_marginRight="13dp"
             android:background="@android:color/transparent"
             android:src="@drawable/iconfont_xiazai" />
 

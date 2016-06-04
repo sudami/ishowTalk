@@ -14,12 +14,11 @@
             android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/editext_height"
-
             android:textSize="16sp"
             android:textColorHint="#9a9a9a"
             android:drawablePadding="14dp"
             android:paddingLeft="@dimen/editext_drawable_padding"
-            android:inputType="text"
+            android:inputType="number"
             myapp:hide_drawable="@drawable/icon_shanchu"
             myapp:password_visible="true"
             myapp:clear_text="true"

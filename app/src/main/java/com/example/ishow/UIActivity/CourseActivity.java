@@ -353,6 +353,7 @@ public class CourseActivity extends AppBaseCompatActivity implements CourseEntry
         EventBus.getDefault().unregister(this);
         if (downLoadService != null)
             unbindService(serviceConnection);
+
         super.onDestroy();
     }
 }

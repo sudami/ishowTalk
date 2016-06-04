@@ -4,8 +4,6 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.os.StrictMode;
-import android.util.Log;
 
 import com.example.ishow.R;
 import com.example.ishow.Utils.PixlesUtils;
@@ -27,13 +25,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.umeng.socialize.PlatformConfig;
-import com.xiaomi.channel.commonutils.logger.LoggerInterface;
-import com.xiaomi.mipush.sdk.Logger;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import org.xutils.DbManager;
-import org.xutils.common.util.LogUtil;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
@@ -86,16 +80,6 @@ public class iShowTalkApplication extends Application {
 
         MiPushClient.checkManifest(this);
 
-        //APP ID1104835856APP KEY0nWtiAHjzi7nwajV  Qq
-        //AppID：wxbcee176067fc70ed AppSecret：2d3646387a00b620e7dcc0aa4ceab881  WEIIXIN
-        //App key：4245668879App secret：632564f60dc55d7b94430c6a3711a88f  XINLANG
-
-        PlatformConfig.setWeixin("wxbcee176067fc70ed", "2d3646387a00b620e7dcc0aa4ceab881");
-        //微信 appid appsecret
-        PlatformConfig.setSinaWeibo("3921700954","04b48b094faeb16683c32669824ebdad");
-        //新浪微博 appkey appsecret
-        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
-        // QQ和Qzone appid appkey
     }
 
 
